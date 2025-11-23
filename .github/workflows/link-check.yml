@@ -42,7 +42,7 @@ jobs:
 
       - name: Create issue for broken links
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const title = '🔗 Broken Links Detected';
