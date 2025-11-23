@@ -1,0 +1,106 @@
+# GitHub Pages Configuration for awesome-autonomous-ops
+
+# Site settings
+title: Awesome Autonomous Operations
+description: A curated map of AI-powered autonomous operations, SRE, and support agents
+author: Nik Kale
+email: nkale@example.com
+url: https://nik-kale.github.io
+baseurl: /awesome-autonomous-ops
+
+# Theme
+theme: jekyll-theme-cayman
+# Alternative themes: minima, minimal, architect, slate, modernist
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-toc
+
+# Collections
+collections:
+  case_studies:
+    output: true
+    permalink: /case-studies/:name
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "case-studies"
+      type: "case_studies"
+    values:
+      layout: "case-study"
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Getting Started
+    url: /GETTING-STARTED
+  - title: Comparisons
+    url: /COMPARISONS
+  - title: Architectures
+    url: /ARCHITECTURES
+  - title: Glossary
+    url: /GLOSSARY
+  - title: Case Studies
+    url: /case-studies/
+  - title: Contributing
+    url: /CONTRIBUTING
+
+# SEO
+twitter:
+  username: # Add if available
+  card: summary_large_image
+
+social:
+  name: Nik Kale
+  links:
+    - https://github.com/nik-kale
+
+github:
+  repository_url: https://github.com/nik-kale/awesome-autonomous-ops
+  is_project_page: true
+  owner_name: nik-kale
+  owner_url: https://github.com/nik-kale
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXXX-X
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .github
+  - scripts
+  - "*.sh"
+  - LICENSE
+  - README_dev.md
+
+# Include
+include:
+  - _pages
+
+# kramdown settings
+kramdown:
+  auto_ids: true
+  toc_levels: 1..3
+
+# Sass
+sass:
+  style: compressed

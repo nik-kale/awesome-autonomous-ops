@@ -16,6 +16,7 @@ The goal is to provide a **reference architecture** for practitioners: clear, co
 
 ## Contents
 
+- [Getting Started](#getting-started)
 - [Projects by the Curator](#projects-by-the-curator)
 - [Graph RAG & Root Cause Analysis for Logs and Incidents](#graph-rag--root-cause-analysis-for-logs-and-incidents)
 - [Agentic Remediation & Runbooks](#agentic-remediation--runbooks)
@@ -24,8 +25,20 @@ The goal is to provide a **reference architecture** for practitioners: clear, co
 - [Compliance, Governance, and Safety for AI Ops](#compliance-governance-and-safety-for-ai-ops)
 - [Datasets, Simulators, and Labs](#datasets-simulators-and-labs)
 - [How to Use This List](#how-to-use-this-list)
+- [Resources](#resources)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Getting Started
+
+New to autonomous operations? Start here:
+
+- **[Getting Started Guide](GETTING-STARTED.md)** - Build your first autonomous ops system in 30 minutes
+- **[Tool Comparisons](COMPARISONS.md)** - Side-by-side comparison of tools to help you choose
+- **[Reference Architectures](ARCHITECTURES.md)** - Proven patterns for read-only, HITL, and fully autonomous systems
+- **[Glossary](GLOSSARY.md)** - Terminology and concepts explained
+- **[Case Studies](case-studies/)** - Real-world implementations and lessons learned
+- **[Roadmap](ROADMAP.md)** - Future vision and planned features
 
 ## Projects by the Curator
 
@@ -146,6 +159,28 @@ This list is organized as a **composable reference architecture** for AI-powered
 **Test and iterate**: Use simulation environments and datasets (Chaos Mesh, ADAPT-Data, OpenTelemetry Demo) to develop and validate your autonomous ops workflows before production deployment.
 
 The goal is not to build a single monolithic "AI ops platform," but rather to compose small, well-defined, interoperable components into a system that matches your operational context and risk tolerance.
+
+## Resources
+
+### Documentation
+
+- **[Getting Started Guide](GETTING-STARTED.md)** - Practical guide to building your first autonomous ops system
+- **[Tool Comparisons](COMPARISONS.md)** - Detailed comparison matrices for all tool categories
+- **[Reference Architectures](ARCHITECTURES.md)** - Three production-ready architectural patterns
+- **[Glossary](GLOSSARY.md)** - Comprehensive terminology reference
+- **[Security Policy](SECURITY.md)** - Security practices and responsible disclosure
+
+### Community
+
+- **[Discussions](https://github.com/nik-kale/awesome-autonomous-ops/discussions)** - Ask questions, share ideas, connect with practitioners
+- **[Case Studies](case-studies/)** - Real-world implementations and lessons learned
+- **[Issue Templates](https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose)** - Submit projects, report issues, suggest improvements
+
+### Planning & Vision
+
+- **[Roadmap](ROADMAP.md)** - Strategic evolution plan (Version 2.0, 3.0, 4.0)
+- **[Contributing Guidelines](CONTRIBUTING.md)** - How to contribute to this resource
+- **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards and expectations
 
 ## Contributing
 

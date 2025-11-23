@@ -1,0 +1,84 @@
+name: Project Health Tracking
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-metrics:
+    name: Update Project Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests pyyaml
+
+      - name: Fetch GitHub metrics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/fetch_project_metrics.py
+
+      - name: Generate health badges
+        run: python .github/scripts/generate_badges.py
+
+      - name: Generate metrics dashboard data
+        run: python .github/scripts/generate_dashboard_data.py
+
+      - name: Commit updated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [[ -n $(git status --porcelain) ]]; then
+            git add data/project-metrics.json data/dashboard-data.json
+            git commit -m "Update project health metrics [automated]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Check for archived projects
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python .github/scripts/check_archived_projects.py
+
+      - name: Create issue for archived projects
+        if: hashFiles('data/archived-projects.json') != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const archived = JSON.parse(fs.readFileSync('data/archived-projects.json', 'utf8'));
+
+            if (archived.length > 0) {
+              let body = '### 🗄️ Archived Projects Detected\n\n';
+              body += 'The following projects have been archived on GitHub:\n\n';
+
+              archived.forEach(project => {
+                body += `- **${project.name}**: ${project.url}\n`;
+                body += `  - Archived on: ${project.archived_at}\n`;
+              });
+
+              body += '\n**Action Required:**\n';
+              body += '- Review if projects should be removed or marked as archived\n';
+              body += '- Update README.md accordingly\n';
+
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🗄️ Archived Projects Need Review',
+                body: body,
+                labels: ['automated', 'maintenance', 'archived-project']
+              });
+            }

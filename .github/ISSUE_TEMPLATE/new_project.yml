@@ -1,0 +1,113 @@
+name: 🚀 Submit New Project
+description: Propose a new project to be added to the list
+title: "[New Project]: "
+labels: ["new-project", "needs-review"]
+assignees:
+  - nik-kale
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to awesome-autonomous-ops! Please fill out the information below to help us review your submission.
+
+  - type: input
+    id: project_name
+    attributes:
+      label: Project Name
+      description: Official name of the project
+      placeholder: "e.g., AutoRCA-Core"
+    validations:
+      required: true
+
+  - type: input
+    id: project_url
+    attributes:
+      label: Project URL
+      description: GitHub repository URL (must be HTTPS)
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category does this project belong to?
+      options:
+        - Graph RAG & Root Cause Analysis for Logs and Incidents
+        - Agentic Remediation & Runbooks
+        - MCP Servers & Gateways for Autonomous Ops
+        - Browser & Desktop Ops Agents
+        - Compliance, Governance, and Safety for AI Ops
+        - Datasets, Simulators, and Labs
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Project Description
+      description: One concise sentence (under 200 characters) describing what the project does and its relevance to autonomous ops
+      placeholder: "Agentic RCA engine with graph-based reasoning over logs, metrics, traces, and configuration changes."
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: Project license (must be OSI-approved)
+      placeholder: "MIT, Apache 2.0, GPL-3.0, etc."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: maintenance
+    attributes:
+      label: Maintenance Status
+      description: When was the last commit to the project?
+      options:
+        - Within last 3 months (Active)
+        - 3-12 months ago (Moderate)
+        - 1-2 years ago (Older but stable)
+        - 2+ years ago (Legacy)
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why is this relevant to autonomous operations?
+      description: Explain how this project advances autonomous ops, SRE, DevOps, or AI-powered support workflows
+      placeholder: "This project enables AI agents to perform X, which is critical for Y autonomous operations workflow..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Submission Checklist
+      description: Please verify all requirements
+      options:
+        - label: Project is **open source** with an OSI-approved license
+          required: true
+        - label: Project is **actively maintained** OR stable/mature
+          required: true
+        - label: Description is **concise** (under 200 characters)
+          required: true
+        - label: URL uses **HTTPS** (not HTTP)
+          required: true
+        - label: Project is **directly relevant** to autonomous operations
+          required: true
+        - label: I have **searched** for duplicates and this project is not already listed
+          required: true
+        - label: I have read [CONTRIBUTING.md](../CONTRIBUTING.md)
+          required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any additional information (demo links, case studies, documentation, etc.)
+      placeholder: "Optional: Links to documentation, demos, or production use cases"

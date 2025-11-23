@@ -1,0 +1,55 @@
+name: 🔗 Report Broken Link
+description: Report a broken or outdated link in the repository
+title: "[Broken Link]: "
+labels: ["broken-link", "maintenance"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping maintain the quality of awesome-autonomous-ops!
+
+  - type: input
+    id: project_name
+    attributes:
+      label: Project Name
+      description: Name of the project with the broken link
+      placeholder: "e.g., AutoRCA-Core"
+    validations:
+      required: true
+
+  - type: input
+    id: broken_url
+    attributes:
+      label: Broken URL
+      description: The URL that is not working
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      options:
+        - 404 Not Found
+        - Repository Archived
+        - Repository Moved/Renamed
+        - SSL/Certificate Error
+        - Timeout/Unreachable
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: correct_url
+    attributes:
+      label: Correct URL (if known)
+      description: If the project moved, provide the new URL
+      placeholder: "https://github.com/new-owner/new-repo"
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information
+      description: Any other context about this broken link
