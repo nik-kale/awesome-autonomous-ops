@@ -1,0 +1,66 @@
+name: 💡 Suggest Improvement
+description: Suggest an improvement to the list structure, documentation, or features
+title: "[Improvement]: "
+labels: ["enhancement"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make awesome-autonomous-ops better? We'd love to hear it!
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area of Improvement
+      options:
+        - Content Organization
+        - Documentation
+        - Automation/CI
+        - Website/UI
+        - Category Structure
+        - Comparison Matrices
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_state
+    attributes:
+      label: Current State
+      description: What's the current situation?
+      placeholder: "Describe what currently exists or is missing"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_improvement
+    attributes:
+      label: Proposed Improvement
+      description: What specific improvement are you suggesting?
+      placeholder: "Describe your idea in detail"
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: How would this improvement help users?
+      placeholder: "Why would this be valuable?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Ideas (Optional)
+      description: If you have thoughts on how to implement this
+      placeholder: "Technical approach, tools to use, etc."
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution Interest
+      options:
+        - label: I'm willing to help implement this improvement

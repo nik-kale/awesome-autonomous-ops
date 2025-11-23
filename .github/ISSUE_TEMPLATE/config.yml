@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/nik-kale/awesome-autonomous-ops/discussions
+    about: Ask questions, share ideas, or discuss autonomous ops topics
+  - name: 📖 Contributing Guidelines
+    url: https://github.com/nik-kale/awesome-autonomous-ops/blob/main/CONTRIBUTING.md
+    about: Read the contribution guidelines before submitting
+  - name: 🔒 Security Policy
+    url: https://github.com/nik-kale/awesome-autonomous-ops/blob/main/SECURITY.md
+    about: Report security vulnerabilities privately

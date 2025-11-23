@@ -1,0 +1,66 @@
+name: Link Health Check
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '**.md'
+
+jobs:
+  link-checker:
+    name: Check All Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install link checker
+        run: npm install -g markdown-link-check
+
+      - name: Check links in all markdown files
+        run: |
+          find . -name "*.md" -not -path "./node_modules/*" -not -path "./.git/*" | \
+          xargs -I {} markdown-link-check {} --config .github/link-check-config.json
+        continue-on-error: true
+
+      - name: Lychee Link Checker
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress '**/*.md' '**/*.html' --exclude-path node_modules --exclude-path .git
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create issue for broken links
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '🔗 Broken Links Detected';
+            const body = `The automated link checker has detected broken links in the repository.
+
+            **Action Required:**
+            - Review the workflow logs for details
+            - Fix or remove broken links
+            - Update project entries if repositories are archived
+
+            **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            This issue was automatically created by the Link Health Check workflow.`;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['automated', 'broken-link', 'maintenance']
+            });

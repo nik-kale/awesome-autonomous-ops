@@ -1,0 +1,24 @@
+# Code Owners for awesome-autonomous-ops
+# These owners will be requested for review when someone opens a PR that modifies files in these paths.
+
+# Default owner for everything
+* @nik-kale
+
+# Specific category owners (can be expanded as community grows)
+# Graph RAG & Root Cause Analysis section
+# README.md @nik-kale
+
+# MCP Servers section
+# README.md @nik-kale
+
+# Automation and CI/CD
+/.github/ @nik-kale
+/.github/workflows/ @nik-kale
+/.github/scripts/ @nik-kale
+
+# Documentation
+/CONTRIBUTING.md @nik-kale
+/CODE_OF_CONDUCT.md @nik-kale
+
+# Project governance
+/LICENSE @nik-kale

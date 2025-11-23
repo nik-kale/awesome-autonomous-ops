@@ -1,0 +1,83 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main, claude/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate Content & Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          npm install -g markdownlint-cli markdown-link-check
+          pip install pyyaml jsonschema
+
+      - name: Markdown linting
+        run: markdownlint '**/*.md' --ignore node_modules --ignore .github
+        continue-on-error: false
+
+      - name: Check alphabetical ordering
+        run: python .github/scripts/check_alphabetical.py
+        continue-on-error: true
+
+      - name: Validate YAML files
+        run: |
+          for file in $(find . -name "*.yml" -o -name "*.yaml"); do
+            python -c "import yaml; yaml.safe_load(open('$file'))"
+          done
+
+      - name: Check for duplicate entries
+        run: python .github/scripts/check_duplicates.py
+        continue-on-error: true
+
+      - name: Spell check
+        uses: streetsidesoftware/cspell-action@v5
+        with:
+          config: '.github/cspell.json'
+          files: '**/*.md'
+        continue-on-error: true
+
+      - name: Validate project schema
+        run: python .github/scripts/validate_schema.py
+        continue-on-error: true
+
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Trivy security scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+        continue-on-error: true
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+        continue-on-error: true

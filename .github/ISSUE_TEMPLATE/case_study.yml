@@ -1,0 +1,103 @@
+name: 📚 Submit Case Study
+description: Share a real-world implementation story
+title: "[Case Study]: "
+labels: ["case-study", "community"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share your production autonomous ops implementation! Case studies help the community learn from real-world deployments.
+
+  - type: input
+    id: title
+    attributes:
+      label: Case Study Title
+      description: A descriptive title for your implementation
+      placeholder: "e.g., Autonomous Incident Response at Scale: Reducing MTTR by 70%"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry/Domain
+      options:
+        - E-commerce/Retail
+        - Financial Services
+        - Healthcare
+        - Technology/SaaS
+        - Telecommunications
+        - Gaming
+        - Media/Entertainment
+        - Government/Public Sector
+        - Education
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: tools_used
+    attributes:
+      label: Tools/Projects Used
+      description: Which tools from the list did you use?
+      options:
+        - label: Graph RAG / Root Cause Analysis tools
+        - label: Agentic Remediation frameworks
+        - label: MCP Servers
+        - label: Browser/Desktop automation
+        - label: Compliance/Governance tools
+        - label: Custom implementations
+
+  - type: textarea
+    id: architecture
+    attributes:
+      label: Architecture Overview
+      description: Describe your autonomous ops architecture
+      placeholder: "What components did you integrate? How do they work together?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: challenges
+    attributes:
+      label: Challenges & Solutions
+      description: What challenges did you face and how did you solve them?
+      placeholder: "Technical challenges, organizational challenges, integration issues, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: results
+    attributes:
+      label: Results & Metrics
+      description: Quantifiable outcomes (MTTR reduction, cost savings, automation coverage, etc.)
+      placeholder: "e.g., Reduced MTTR from 45min to 12min, automated 80% of routine incidents..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: lessons_learned
+    attributes:
+      label: Lessons Learned
+      description: What would you do differently? What advice would you give?
+      placeholder: "Key takeaways and recommendations for others"
+
+  - type: dropdown
+    id: anonymization
+    attributes:
+      label: Anonymization Preference
+      description: How should this case study be shared?
+      options:
+        - Fully public (company name, metrics, details)
+        - Anonymized (no company name, rounded metrics)
+        - Anonymized (general learnings only, no specific metrics)
+    validations:
+      required: true
+
+  - type: textarea
+    id: contact
+    attributes:
+      label: Contact Information (Optional)
+      description: If you're willing to be contacted for follow-up questions
+      placeholder: "Email, LinkedIn, or GitHub handle"

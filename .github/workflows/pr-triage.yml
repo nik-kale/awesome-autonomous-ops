@@ -1,0 +1,134 @@
+name: PR Triage & Auto-labeling
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  triage:
+    name: Auto-label and Validate PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Auto-label based on files changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            const labels = new Set();
+
+            files.forEach(file => {
+              if (file.filename === 'README.md') {
+                if (file.patch.includes('## Graph RAG')) labels.add('category:graph-rag');
+                if (file.patch.includes('## Agentic Remediation')) labels.add('category:remediation');
+                if (file.patch.includes('## MCP Servers')) labels.add('category:mcp');
+                if (file.patch.includes('## Browser')) labels.add('category:browser-agents');
+                if (file.patch.includes('## Compliance')) labels.add('category:compliance');
+                if (file.patch.includes('## Datasets')) labels.add('category:datasets');
+
+                // Detect type of change
+                if (file.patch.includes('+- **[')) labels.add('new-project');
+                if (file.patch.includes('- **[') && file.patch.includes('](http')) {
+                  if (file.patch.match(/^\-.*\]/m)) labels.add('remove-project');
+                }
+              }
+
+              if (file.filename.includes('CONTRIBUTING.md')) labels.add('documentation');
+              if (file.filename.includes('CODE_OF_CONDUCT.md')) labels.add('governance');
+              if (file.filename.includes('.github/')) labels.add('automation');
+              if (file.filename.includes('GETTING-STARTED.md')) labels.add('documentation');
+              if (file.filename.includes('GLOSSARY.md')) labels.add('documentation');
+              if (file.filename.includes('ARCHITECTURES.md')) labels.add('documentation');
+              if (file.filename.includes('COMPARISONS.md')) labels.add('documentation');
+            });
+
+            if (labels.size > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: Array.from(labels)
+              });
+            }
+
+      - name: Validate PR description
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            if (!pr.body || pr.body.length < 20) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: '⚠️ **PR Description Required**\n\nPlease provide a detailed description of your changes:\n- What project(s) are you adding/modifying?\n- Why is this relevant to autonomous operations?\n- Have you verified the project is actively maintained?\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.'
+              });
+            }
+
+      - name: Check for new project submission
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            const readmeFile = files.find(f => f.filename === 'README.md');
+
+            if (readmeFile && readmeFile.patch.includes('+- **[')) {
+              const projectMatches = readmeFile.patch.match(/\+- \*\*\[(.*?)\]\((.*?)\)\*\* – (.*)/g);
+
+              if (projectMatches) {
+                let comment = '### 📋 New Project Submission Checklist\n\n';
+                comment += 'Thank you for your contribution! Please verify:\n\n';
+                comment += '- [ ] Project is **open source** with recognized license\n';
+                comment += '- [ ] Project is **actively maintained** (commits in last 12 months)\n';
+                comment += '- [ ] Description is **concise** (under 200 characters)\n';
+                comment += '- [ ] Entry is in **alphabetical order** within section\n';
+                comment += '- [ ] URL uses **HTTPS** (not HTTP)\n';
+                comment += '- [ ] Project is **directly relevant** to autonomous operations\n';
+                comment += '- [ ] No **duplicate** entries exist\n\n';
+                comment += 'Detected projects:\n';
+
+                projectMatches.forEach(match => {
+                  const [_, name, url, desc] = match.match(/\+- \*\*\[(.*?)\]\((.*?)\)\*\* – (.*)/);
+                  comment += `- **${name}**: ${url}\n`;
+                });
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body: comment
+                });
+              }
+            }
+
+      - name: Welcome first-time contributors
+        uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-message: |
+            🎉 **Welcome to awesome-autonomous-ops!**
+
+            Thank you for your first contribution! We appreciate you taking the time to improve this resource.
+
+            A maintainer will review your PR soon. In the meantime:
+            - Ensure you've read [CONTRIBUTING.md](CONTRIBUTING.md)
+            - Check that automated validations pass
+            - Feel free to join our [Discussions](../../discussions)
+
+            Looking forward to your contributions! 🚀
