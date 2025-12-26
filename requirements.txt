@@ -1,0 +1,12 @@
+# Production dependencies for awesome-autonomous-ops
+# These are used by validation scripts and CI workflows
+
+# HTTP client for GitHub API interactions
+requests==2.32.3
+
+# YAML parsing for configuration files
+PyYAML==6.0.2
+
+# JSON schema validation for structured data
+jsonschema==4.23.0
+

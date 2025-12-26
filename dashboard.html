@@ -1,0 +1,405 @@
+---
+layout: default
+title: Ecosystem Dashboard
+---
+
+<div class="dashboard-header">
+  <h1>📊 Ecosystem Dashboard</h1>
+  <p class="subtitle">Real-time metrics and health indicators for the autonomous operations ecosystem</p>
+  <div id="last-updated" class="last-updated">Loading...</div>
+</div>
+
+<div class="dashboard-container">
+  <div class="stats-cards" id="stats-cards">
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-value" id="total-projects">-</div>
+      <div class="stat-label">Total Projects</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-value" id="total-stars">-</div>
+      <div class="stat-label">Total Stars</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🍴</div>
+      <div class="stat-value" id="total-forks">-</div>
+      <div class="stat-label">Total Forks</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🟢</div>
+      <div class="stat-value" id="active-projects">-</div>
+      <div class="stat-label">Active Projects</div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-container">
+      <h2>Project Freshness Distribution</h2>
+      <canvas id="freshness-chart"></canvas>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="dot green"></span> Active (&lt; 90 days)</div>
+        <div class="legend-item"><span class="dot yellow"></span> Moderate (90-365 days)</div>
+        <div class="legend-item"><span class="dot orange"></span> Stale (1-2 years)</div>
+        <div class="legend-item"><span class="dot red"></span> Inactive (&gt; 2 years)</div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h2>Top Programming Languages</h2>
+      <canvas id="language-chart"></canvas>
+    </div>
+
+    <div class="chart-container full-width">
+      <h2>License Distribution</h2>
+      <canvas id="license-chart"></canvas>
+    </div>
+  </div>
+
+  <div class="data-notice">
+    <p>📈 Dashboard data is automatically updated daily via GitHub Actions. The metrics are fetched directly from the GitHub API.</p>
+    <p><a href="{{ site.github.repository_url }}/actions/workflows/project-health.yml">View workflow runs →</a></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+// Load dashboard data
+async function loadDashboardData() {
+  try {
+    const baseUrl = '{{ site.baseurl }}' || '';
+    const response = await fetch(`${baseUrl}/data/dashboard-data.json`);
+
+    if (!response.ok) {
+      throw new Error('Dashboard data not available yet');
+    }
+
+    const data = await response.json();
+    renderDashboard(data);
+  } catch (error) {
+    console.error('Error loading dashboard data:', error);
+    document.querySelector('.dashboard-container').innerHTML = `
+      <div class="data-error">
+        <h2>📊 Dashboard Data Not Yet Available</h2>
+        <p>The dashboard metrics are generated automatically via GitHub Actions. The first data collection run may not have completed yet.</p>
+        <p>Please check back in a few minutes, or <a href="${'{{ site.github.repository_url }}' || ''}/actions/workflows/project-health.yml">trigger a manual workflow run</a>.</p>
+      </div>
+    `;
+  }
+}
+
+function formatNumber(num) {
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'k';
+  }
+  return num.toString();
+}
+
+function renderDashboard(data) {
+  // Update timestamp
+  const timestamp = new Date(data.generated_at);
+  document.getElementById('last-updated').textContent =
+    `Last updated: ${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
+
+  // Update stat cards
+  document.getElementById('total-projects').textContent = data.overview.total_projects;
+  document.getElementById('total-stars').textContent = formatNumber(data.overview.total_stars);
+  document.getElementById('total-forks').textContent = formatNumber(data.overview.total_forks);
+  document.getElementById('active-projects').textContent = data.freshness_distribution.active || 0;
+
+  // Freshness Distribution Pie Chart
+  const freshnessCtx = document.getElementById('freshness-chart').getContext('2d');
+  new Chart(freshnessCtx, {
+    type: 'pie',
+    data: {
+      labels: ['Active', 'Moderate', 'Stale', 'Inactive'],
+      datasets: [{
+        data: [
+          data.freshness_distribution.active || 0,
+          data.freshness_distribution.moderate || 0,
+          data.freshness_distribution.stale || 0,
+          data.freshness_distribution.inactive || 0
+        ],
+        backgroundColor: [
+          '#28a745',
+          '#ffc107',
+          '#fd7e14',
+          '#dc3545'
+        ],
+        borderWidth: 2,
+        borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+
+  // Top Languages Bar Chart
+  const languageCtx = document.getElementById('language-chart').getContext('2d');
+  const languages = Object.entries(data.top_languages)
+    .filter(([lang]) => lang !== 'Unknown')
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
+
+  new Chart(languageCtx, {
+    type: 'bar',
+    data: {
+      labels: languages.map(([lang]) => lang),
+      datasets: [{
+        label: 'Projects',
+        data: languages.map(([, count]) => count),
+        backgroundColor: '#0366d6',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
+        }
+      }
+    }
+  });
+
+  // License Distribution Horizontal Bar Chart
+  const licenseCtx = document.getElementById('license-chart').getContext('2d');
+  const licenses = Object.entries(data.license_distribution)
+    .filter(([lic]) => lic !== 'Unknown')
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
+
+  new Chart(licenseCtx, {
+    type: 'bar',
+    data: {
+      labels: licenses.map(([lic]) => lic),
+      datasets: [{
+        label: 'Projects',
+        data: licenses.map(([, count]) => count),
+        backgroundColor: '#28a745',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
+        }
+      }
+    }
+  });
+}
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', loadDashboardData);
+</script>
+
+<style>
+.dashboard-header {
+  text-align: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid #e1e4e8;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #586069;
+  margin-bottom: 1rem;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #6a737d;
+  font-style: italic;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card:nth-child(2) {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.stat-card:nth-child(3) {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.stat-card:nth-child(4) {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.chart-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #e1e4e8;
+}
+
+.chart-container.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-container h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  color: #24292e;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e4e8;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #586069;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.dot.green { background-color: #28a745; }
+.dot.yellow { background-color: #ffc107; }
+.dot.orange { background-color: #fd7e14; }
+.dot.red { background-color: #dc3545; }
+
+.data-notice {
+  text-align: center;
+  padding: 2rem;
+  background: #f6f8fa;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.data-notice p {
+  margin: 0.5rem 0;
+  color: #586069;
+}
+
+.data-error {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.data-error h2 {
+  color: #856404;
+  margin-bottom: 1rem;
+}
+
+.data-error p {
+  color: #856404;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
