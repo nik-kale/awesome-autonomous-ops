@@ -5,6 +5,7 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![RSS Feed](https://img.shields.io/badge/RSS-Subscribe-orange.svg)](https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/feed.xml)
 
 ## Introduction
 
