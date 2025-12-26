@@ -11,12 +11,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 
-try:
-    import requests
-except ImportError:
-    print("Installing requests...")
-    os.system("pip install requests")
-    import requests
+import requests
 
 
 def extract_github_projects(content):
