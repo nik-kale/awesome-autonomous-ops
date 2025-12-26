@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g markdownlint-cli markdown-link-check
-          pip install pyyaml jsonschema
+          pip install -r requirements.txt
 
       - name: Markdown linting
         run: markdownlint '**/*.md' --ignore node_modules --ignore .github
@@ -66,6 +66,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pip-audit==2.7.3
+
+      - name: Run pip-audit for dependency vulnerabilities
+        run: pip-audit --requirement requirements.txt --desc
+        continue-on-error: false
 
       - name: Run Trivy security scanner
         uses: aquasecurity/trivy-action@master
