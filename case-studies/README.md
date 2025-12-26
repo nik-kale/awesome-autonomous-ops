@@ -13,26 +13,46 @@ This directory contains anonymized case studies from organizations that have dep
 
 ## Available Case Studies
 
-### By Industry
+### Reference Architecture Examples
 
-Coming soon! Be the first to share your implementation story.
+> **Note**: These are educational reference architectures, not real company deployments. They demonstrate realistic patterns based on industry best practices.
 
-**Contribute your case study:**
+- **[Kubernetes RCA System](./2025/kubernetes-rca-system.md)** - Graph-based root cause analysis using LangGraph and txtai
+  - *Industry*: Technology/SaaS  
+  - *Pattern*: Read-Only Investigation
+  - *Key Results*: 83% reduction in MTTI, 85% diagnostic accuracy
+
+- **[Slack Investigation Assistant](./2025/slack-investigation-assistant.md)** - Conversational ops assistant with MCP-based tool access
+  - *Industry*: Financial Services
+  - *Pattern*: Read-Only Investigation
+  - *Key Results*: 70% reduction in time-to-first-clue, 88% engineer adoption
+
+- **[HITL Remediation System](./2025/hitl-remediation-system.md)** - Human-approved automated remediations with browser automation
+  - *Industry*: Healthcare Technology
+  - *Pattern*: Human-in-the-Loop Remediation
+  - *Key Results*: 73% reduction in MTTR, 95% approval rate
+
+### Contribute Your Case Study
+
+**Share your real-world implementation:**
 - [Submit via GitHub issue](https://github.com/nik-kale/awesome-autonomous-ops/issues/new?template=case_study.yml)
 - [Use the template](./templates/case-study-template.md)
 - [Email the maintainer](https://github.com/nik-kale)
 
 ### By Architecture Pattern
 
-- **Read-Only Investigation Assistants**: Coming soon
-- **HITL Remediation Systems**: Coming soon
-- **Full Autonomous Platforms**: Coming soon
+- **Read-Only Investigation Assistants**: 
+  - [Kubernetes RCA System](./2025/kubernetes-rca-system.md)
+  - [Slack Investigation Assistant](./2025/slack-investigation-assistant.md)
+- **HITL Remediation Systems**: 
+  - [HITL Remediation System](./2025/hitl-remediation-system.md)
+- **Full Autonomous Platforms**: Coming soon - contribute yours!
 
 ### By Tool Combination
 
-- **LangGraph + MCP + StackStorm**: Coming soon
-- **AutoRCA + Secure-MCP-Gateway + Robusta**: Coming soon
-- **txtai + Playwright + Rundeck**: Coming soon
+- **LangGraph + txtai + Prometheus**: [Kubernetes RCA System](./2025/kubernetes-rca-system.md)
+- **Claude + MCP Servers + OPA**: [Slack Investigation Assistant](./2025/slack-investigation-assistant.md)
+- **browser-use + StackStorm + OPA**: [HITL Remediation System](./2025/hitl-remediation-system.md)
 
 ## Benefits of Sharing
 
