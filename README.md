@@ -5,6 +5,8 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+![Projects](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/data/badge-data.json&query=$.total&label=projects&color=blue)
+![Active](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/data/badge-data.json&query=$.active&label=active&color=brightgreen)
 
 ## Introduction
 
