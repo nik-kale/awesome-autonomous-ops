@@ -1,0 +1,33 @@
+{
+  "name": "awesome-autonomous-ops",
+  "version": "1.0.0",
+  "description": "A curated map of AI-powered autonomous operations, SRE, and support agents",
+  "private": true,
+  "scripts": {
+    "lint": "markdownlint '**/*.md' --ignore node_modules --ignore .github",
+    "link-check": "markdown-link-check README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nik-kale/awesome-autonomous-ops.git"
+  },
+  "keywords": [
+    "autonomous-operations",
+    "sre",
+    "devops",
+    "ai-agents",
+    "observability",
+    "incident-response"
+  ],
+  "author": "Nik Kale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nik-kale/awesome-autonomous-ops/issues"
+  },
+  "homepage": "https://github.com/nik-kale/awesome-autonomous-ops#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.43.0",
+    "markdown-link-check": "^3.12.2"
+  }
+}
+
