@@ -48,7 +48,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if [[ -n $(git status --porcelain) ]]; then
-            git add data/project-metrics.json data/dashboard-data.json
+            git add data/project-metrics.json data/dashboard-data.json data/badge-data.json
             git commit -m "Update project health metrics [automated]"
             git push
           else
