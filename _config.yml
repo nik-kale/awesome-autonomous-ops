@@ -48,6 +48,8 @@ defaults:
 navigation:
   - title: Home
     url: /
+  - title: Dashboard
+    url: /dashboard
   - title: Getting Started
     url: /GETTING-STARTED
   - title: Comparisons
@@ -95,6 +97,7 @@ exclude:
 # Include
 include:
   - _pages
+  - data
 
 # kramdown settings
 kramdown:
