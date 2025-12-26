@@ -1,0 +1,253 @@
+---
+layout: default
+title: Home
+---
+
+<div class="hero-section">
+  <h1>🤖 Awesome Autonomous Operations</h1>
+  <p class="subtitle">A curated map of AI-powered autonomous operations, SRE, and support agents</p>
+  
+  <div class="hero-badges">
+    <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+    <a href="CONTRIBUTING"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+  </div>
+
+  <div class="cta-buttons">
+    <a href="GETTING-STARTED" class="btn btn-primary">Get Started</a>
+    <a href="dashboard" class="btn btn-secondary">View Dashboard</a>
+    <a href="{{ site.github.repository_url }}" class="btn btn-secondary">View on GitHub</a>
+  </div>
+</div>
+
+<div class="intro-section">
+  <h2>What is Autonomous Operations?</h2>
+  <p><strong>Autonomous operations</strong> is the convergence of AI, observability, and reliability engineering. It's not just about chatbots answering questions — it's about AI agents that can <strong>diagnose incidents</strong>, <strong>execute remediation runbooks</strong>, <strong>navigate ops consoles</strong>, and <strong>coordinate across toolchains</strong> with appropriate safety guardrails.</p>
+  
+  <p>This list curates the essential building blocks for AI-powered SRE, DevOps, and SecOps workflows: graph-based root cause analysis over logs and metrics, agentic systems that troubleshoot and heal production, Model Context Protocol (MCP) servers that safely expose operational tools to AI, and browser automation frameworks that let agents interact with dashboards and consoles.</p>
+</div>
+
+<div class="quick-links">
+  <h2>Quick Links</h2>
+  
+  <div class="cards-grid">
+    <div class="card">
+      <h3>📚 Getting Started</h3>
+      <p>Build your first autonomous ops system in 30 minutes</p>
+      <a href="GETTING-STARTED" class="card-link">Learn More →</a>
+    </div>
+    
+    <div class="card">
+      <h3>⚖️ Tool Comparisons</h3>
+      <p>Side-by-side comparison of tools to help you choose</p>
+      <a href="COMPARISONS" class="card-link">Compare Tools →</a>
+    </div>
+    
+    <div class="card">
+      <h3>🏗️ Architectures</h3>
+      <p>Proven patterns for read-only, HITL, and fully autonomous systems</p>
+      <a href="ARCHITECTURES" class="card-link">View Patterns →</a>
+    </div>
+    
+    <div class="card">
+      <h3>📖 Glossary</h3>
+      <p>Terminology and concepts explained</p>
+      <a href="GLOSSARY" class="card-link">Browse Terms →</a>
+    </div>
+    
+    <div class="card">
+      <h3>📊 Dashboard</h3>
+      <p>Interactive ecosystem metrics and project health</p>
+      <a href="dashboard" class="card-link">View Dashboard →</a>
+    </div>
+    
+    <div class="card">
+      <h3>💼 Case Studies</h3>
+      <p>Real-world implementations and lessons learned</p>
+      <a href="case-studies/" class="card-link">Read Cases →</a>
+    </div>
+  </div>
+</div>
+
+<div class="categories-section">
+  <h2>Project Categories</h2>
+  
+  <div class="category">
+    <h3>🔍 Graph RAG & Root Cause Analysis</h3>
+    <p>Tools that perform retrieval-augmented generation, graph-based reasoning, and correlation analysis over operational telemetry to identify incident root causes.</p>
+  </div>
+  
+  <div class="category">
+    <h3>🤖 Agentic Remediation & Runbooks</h3>
+    <p>Systems where AI agents autonomously execute or orchestrate remediation actions, runbooks, and operational procedures.</p>
+  </div>
+  
+  <div class="category">
+    <h3>🔌 MCP Servers & Gateways</h3>
+    <p>Model Context Protocol servers and gateways that expose operational tools with appropriate security controls.</p>
+  </div>
+  
+  <div class="category">
+    <h3>🖥️ Browser & Desktop Ops Agents</h3>
+    <p>Browser automation frameworks and desktop agents that let AI navigate operational consoles and dashboards.</p>
+  </div>
+  
+  <div class="category">
+    <h3>🛡️ Compliance & Safety</h3>
+    <p>Tools and frameworks for establishing guardrails, approval workflows, and audit trails.</p>
+  </div>
+  
+  <div class="category">
+    <h3>🧪 Datasets & Simulators</h3>
+    <p>Datasets, simulation environments, and hands-on labs for developing and testing autonomous operations systems.</p>
+  </div>
+</div>
+
+<div class="contribute-section">
+  <h2>🤝 Contribute</h2>
+  <p>This is a community-driven project. Contributions are welcome! Please see our <a href="CONTRIBUTING">Contributing Guidelines</a> for details on proposing new entries, reporting issues, or suggesting improvements.</p>
+  <a href="{{ site.github.repository_url }}/issues/new/choose" class="btn btn-primary">Submit a Project</a>
+</div>
+
+<style>
+.hero-section {
+  text-align: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid #e1e4e8;
+  margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #586069;
+  margin-bottom: 1.5rem;
+}
+
+.hero-badges {
+  margin: 1.5rem 0;
+}
+
+.hero-badges img {
+  margin: 0 0.25rem;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: #0366d6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0256c7;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: #f6f8fa;
+  color: #24292e;
+  border: 1px solid #e1e4e8;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+  text-decoration: none;
+}
+
+.intro-section {
+  margin: 3rem 0;
+  line-height: 1.7;
+}
+
+.quick-links {
+  margin: 3rem 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.card p {
+  color: #586069;
+  margin-bottom: 1rem;
+}
+
+.card-link {
+  color: #0366d6;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.categories-section {
+  margin: 3rem 0;
+}
+
+.category {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid #0366d6;
+  background: #f6f8fa;
+}
+
+.category h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.category p {
+  margin-bottom: 0;
+  color: #586069;
+}
+
+.contribute-section {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: #f6f8fa;
+  border-radius: 8px;
+}
+</style>
+
