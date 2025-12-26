@@ -42,14 +42,17 @@ jobs:
       - name: Generate metrics dashboard data
         run: python .github/scripts/generate_dashboard_data.py
 
+      - name: Generate RSS feed
+        run: python .github/scripts/generate_rss.py
+
       - name: Commit updated metrics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if [[ -n $(git status --porcelain) ]]; then
-            git add data/project-metrics.json data/dashboard-data.json data/badge-data.json
-            git commit -m "Update project health metrics [automated]"
+            git add data/project-metrics.json data/dashboard-data.json data/badge-data.json data/tracked-projects.json feed.xml
+            git commit -m "Update project health metrics and RSS feed [automated]"
             git push
           else
             echo "No changes to commit"

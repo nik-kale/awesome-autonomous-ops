@@ -7,6 +7,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 ![Projects](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/data/badge-data.json&query=$.total&label=projects&color=blue)
 ![Active](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/data/badge-data.json&query=$.active&label=active&color=brightgreen)
+[![RSS Feed](https://img.shields.io/badge/RSS-Subscribe-orange.svg)](https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/feed.xml)
 
 ## Introduction
 
