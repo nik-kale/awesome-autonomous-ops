@@ -85,6 +85,8 @@ Systems where AI agents autonomously execute or orchestrate remediation actions,
 
 - **[Robusta](https://github.com/robusta-dev/robusta)** – Kubernetes troubleshooting and automation platform. Provides diagnostic playbooks and auto-remediation capabilities.
 
+- **[KubeStellar Console](https://github.com/kubestellar/console)** – Open source AI-powered multi-cluster Kubernetes dashboard with built-in AI chat for autonomous cluster troubleshooting, mission-based operations, and AI-guided remediation. 20+ CNCF integrations (Argo, Kyverno, Prometheus, Falco, OPA/Gatekeeper). CNCF Sandbox project (Apache 2.0).
+
 ## MCP Servers & Gateways for Autonomous Ops
 
 Model Context Protocol servers and gateways that expose operational tools, ticketing systems, observability platforms, and infrastructure APIs to AI agents with appropriate security controls.
