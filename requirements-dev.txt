@@ -5,19 +5,19 @@
 -r requirements.txt
 
 # Testing framework
-pytest==8.3.4
-pytest-cov==6.0.0
+pytest==9.0.3
+pytest-cov==7.1.0
 
 # Code quality tools
-black==24.10.0
-flake8==7.1.1
-pylint==3.3.2
+black==26.3.1
+flake8==7.3.0
+pylint==4.0.5
 
 # Type checking
-mypy==1.13.0
-types-requests==2.32.0.20241016
-types-PyYAML==6.0.12.20240917
+mypy==1.20.2
+types-requests==2.33.0.20260408
+types-PyYAML==6.0.12.20260408
 
 # Security scanning
-pip-audit==2.7.3
+pip-audit==2.10.0
 

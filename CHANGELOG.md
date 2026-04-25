@@ -5,6 +5,22 @@ All notable changes to awesome-autonomous-ops will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-04-25
+
+### Added
+
+- **[KubeStellar Console](https://github.com/kubestellar/console)** — AI-powered multi-cluster Kubernetes dashboard added to the Agentic Remediation & Runbooks section (CNCF Sandbox, Apache 2.0). Contributed by @clubanderson in PR #17.
+
+### Fixed
+
+- **Project Health Tracking workflow** — Daily scheduled workflow was failing because `.gitignore` blocked `data/*.json` from being committed. Changed to `git add -f` so generated metrics, badges, and RSS feed data are published correctly.
+
+### Changed
+
+- **CI hardening** — Added least-privilege `permissions:` blocks to all workflow files. Pinned `aquasecurity/trivy-action` from `@master` to `@v0.36.0`. Gated Slack notification steps on `SLACK_WEBHOOK_URL` secret presence to eliminate noise on forks and unconfigured repos. Switched CI validation to use pinned `requirements.txt` instead of ad-hoc `pip install`.
+- **Dependabot bumps** — Merged 5 GitHub Actions version bumps: `github/codeql-action` v3 to v4, `actions/upload-pages-artifact` v3 to v4, `actions/first-interaction` v1 to v3, `actions/setup-node` v4 to v6, `actions/github-script` v7 to v8.
+- **Python dependency refresh** — Bumped `requests` 2.32.3 to 2.33.1, `PyYAML` 6.0.2 to 6.0.3, `jsonschema` 4.23.0 to 4.26.0, `pytest` 8.3.4 to 9.0.3, `pytest-cov` 6.0.0 to 7.1.0, `black` 24.10.0 to 26.3.1, `flake8` 7.1.1 to 7.3.0, `pylint` 3.3.2 to 4.0.5, `mypy` 1.13.0 to 1.20.2, `pip-audit` 2.7.3 to 2.10.0.
+
 ## [2.0.0] - 2025-11-23
 
 ### Added - Infrastructure & Automation
