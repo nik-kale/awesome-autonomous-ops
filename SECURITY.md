@@ -10,7 +10,7 @@ The security of awesome-autonomous-ops is important to us. If you discover a sec
 
 Instead, please report security issues via:
 
-1. **GitHub Security Advisories**: Use the [Security tab](../../security/advisories/new) to privately report vulnerabilities
+1. **GitHub Security Advisories**: Use the [Security tab](https://github.com/nik-kale/awesome-autonomous-ops/security/advisories/new) to privately report vulnerabilities
 2. **Email**: Contact the maintainer directly (see profile for contact information)
 
 ### What to Include

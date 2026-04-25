@@ -63,8 +63,6 @@ Tools that perform retrieval-augmented generation, graph-based reasoning, and co
 
 - **[AutoRCA-Core (ADAPT-RCA)](https://github.com/nik-kale/AutoRCA-Core)** *(coming soon)* – Agentic RCA engine with graph-based reasoning over logs, metrics, traces, and configuration changes. Reference implementation for autonomous reliability workflows.
 
-- **[Sage](https://github.com/apple/ml-sage)** – Apple's system for grounding LLM reasoning in structured incident data. Uses semantic search and entity graphs to improve diagnostic accuracy.
-
 - **[LangGraph](https://github.com/langchain-ai/langgraph)** – Framework for building stateful, graph-based AI workflows. Useful for orchestrating multi-step diagnostic and remediation processes with cyclical reasoning.
 
 - **[txtai](https://github.com/neuml/txtai)** – Embeddings database for semantic search over logs and documentation. Enables RAG workflows for incident troubleshooting and knowledge retrieval.
@@ -95,13 +93,11 @@ Model Context Protocol servers and gateways that expose operational tools, ticke
 
 - **[MCP Servers for Kubernetes](https://github.com/kubernetes/kubernetes)** – MCP-compatible interfaces for Kubernetes resources. Enables AI agents to query cluster state and (with proper guardrails) execute kubectl commands.
 
-- **[PulseMCP](https://github.com/pulsemcp/pulsemcp)** – Community directory of MCP servers, including ops-focused implementations for observability and infrastructure tools.
+- **[PulseMCP](https://github.com/pulsemcp/mcp-servers)** – Community directory of MCP servers, including ops-focused implementations for observability and infrastructure tools.
 
 - **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** – Curated list of MCP servers across domains. Filter for observability, infrastructure, and DevOps categories for ops-relevant integrations.
 
-- **[MCP GitHub Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github)** – Official MCP server for GitHub API access. Useful for automated incident ticket creation and PR-based remediation workflows.
-
-- **[MCP Prometheus Server](https://github.com/modelcontextprotocol/servers/tree/main/src/prometheus)** – Official MCP server for Prometheus metrics. Enables AI agents to query time-series data during diagnostic investigations.
+- **[GitHub MCP Server](https://github.com/github/github-mcp-server)** – GitHub's official MCP server for GitHub API access. Useful for automated incident ticket creation and PR-based remediation workflows.
 
 ## Browser & Desktop Ops Agents
 
@@ -177,7 +173,7 @@ The goal is not to build a single monolithic "AI ops platform," but rather to co
 
 ### Community
 
-- **[Discussions](https://github.com/nik-kale/awesome-autonomous-ops/discussions)** - Ask questions, share ideas, connect with practitioners
+- **[Issues](https://github.com/nik-kale/awesome-autonomous-ops/issues)** - Ask questions, share ideas, report problems
 - **[Case Studies](case-studies/)** - Real-world implementations and lessons learned
 - **[Issue Templates](https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose)** - Submit projects, report issues, suggest improvements
 

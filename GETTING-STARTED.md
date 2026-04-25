@@ -109,8 +109,7 @@ For a **proof-of-concept autonomous ops system**, you need:
 
 **Option A: MCP Servers** (If APIs exist)
 - **Tools**:
-  - [MCP Prometheus Server](https://github.com/modelcontextprotocol/servers/tree/main/src/prometheus)
-  - [MCP GitHub Server](https://github.com/modelcontextprotocol/servers/tree/main/src/github)
+  - [GitHub MCP Server](https://github.com/github/github-mcp-server)
   - [MCP Kubernetes](https://github.com/kubernetes/kubernetes) (custom implementation)
 - **Why**: Secure, structured access to operational tools
 - **Effort**: 2-4 days per integration
@@ -356,7 +355,7 @@ Recommendation: Increase connection pool size or investigate slow queries.
 - [Secure-AI-Support-Fabric](https://github.com/nik-kale/Secure-AI-Support-Fabric) *(coming soon)* - Complete lab environment
 
 ### Community
-- [GitHub Discussions](https://github.com/nik-kale/awesome-autonomous-ops/discussions) - Ask questions
+- [GitHub Issues](https://github.com/nik-kale/awesome-autonomous-ops/issues) - Ask questions
 - [Case Studies](./case-studies/) - Real-world implementations
 - [Comparison Matrices](./COMPARISONS.md) - Tool selection guides
 
@@ -367,4 +366,4 @@ Recommendation: Increase connection pool size or investigate slow queries.
 
 ---
 
-**Questions?** Open a [discussion](https://github.com/nik-kale/awesome-autonomous-ops/discussions) or submit an [improvement suggestion](https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose).
+**Questions?** Open an [issue](https://github.com/nik-kale/awesome-autonomous-ops/issues) or submit an [improvement suggestion](https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose).

@@ -14,7 +14,7 @@ def sample_readme_content():
 ## Graph RAG & Root Cause Analysis
 
 - **[AutoRCA-Core](https://github.com/nik-kale/AutoRCA-Core)** *(coming soon)* - Graph RAG and multi-signal root cause analysis engine.
-- **[Sage](https://github.com/apple/ml-sage)** - Apple's system for grounding LLM reasoning in structured incident data.
+- **[LangGraph](https://github.com/langchain-ai/langgraph)** - Framework for building stateful, graph-based AI workflows.
 - **[txtai](https://github.com/neuml/txtai)** - Embeddings database for semantic search over logs.
 
 ## Agentic Remediation & Runbooks

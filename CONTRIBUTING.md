@@ -66,9 +66,9 @@ Use this format:
 **Examples**:
 
 ```markdown
-- **[Sage](https://github.com/apple/ml-sage)** – Apple's system for grounding LLM reasoning in structured incident data. Uses semantic search and entity graphs to improve diagnostic accuracy.
-
 - **[Robusta](https://github.com/robusta-dev/robusta)** – Kubernetes troubleshooting and automation platform. Provides diagnostic playbooks and auto-remediation capabilities.
+
+- **[LangGraph](https://github.com/langchain-ai/langgraph)** – Framework for building stateful, graph-based AI workflows. Useful for orchestrating multi-step diagnostic and remediation processes with cyclical reasoning.
 ```
 
 ### 3. Submit a Pull Request

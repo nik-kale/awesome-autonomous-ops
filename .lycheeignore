@@ -1,0 +1,11 @@
+# Jekyll Liquid template URLs (only valid after build)
+{{ site.github.repository_url }}
+
+# Relative paths without extensions (resolved by Jekyll/GitHub Pages)
+file:///.*COMPARISONS$
+file:///.*CONTRIBUTING$
+file:///.*ARCHITECTURES$
+file:///.*GETTING-STARTED$
+file:///.*GLOSSARY$
+file:///.*dashboard$
+file:///.*security/advisories/new$
