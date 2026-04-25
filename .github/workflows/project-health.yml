@@ -6,6 +6,10 @@ on:
     - cron: '0 2 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  issues: write
+
 jobs:
   update-metrics:
     name: Update Project Metrics
@@ -50,8 +54,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          if [[ -n $(git status --porcelain) ]]; then
-            git add data/project-metrics.json data/dashboard-data.json data/badge-data.json data/tracked-projects.json feed.xml
+          git add -f data/project-metrics.json data/dashboard-data.json data/badge-data.json data/tracked-projects.json
+          git add feed.xml
+
+          if [[ -n $(git diff --cached --name-only) ]]; then
             git commit -m "Update project health metrics and RSS feed [automated]"
             git push
           else
