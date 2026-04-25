@@ -417,7 +417,7 @@ allow {
 
 **Organization**: N/A - Educational Template
 
-**Questions?**: Please open a discussion in the [awesome-autonomous-ops repository](https://github.com/nik-kale/awesome-autonomous-ops/discussions)
+**Questions?**: Please open an issue in the [awesome-autonomous-ops repository](https://github.com/nik-kale/awesome-autonomous-ops/issues)
 
 ---
 

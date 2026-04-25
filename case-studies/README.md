@@ -161,7 +161,7 @@ case-studies/
 
 ## Questions?
 
-- **General questions**: [GitHub Discussions](https://github.com/nik-kale/awesome-autonomous-ops/discussions)
+- **General questions**: [GitHub Issues](https://github.com/nik-kale/awesome-autonomous-ops/issues)
 - **Submission help**: [Open an issue](https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose)
 - **Privacy concerns**: Email maintainer directly
 

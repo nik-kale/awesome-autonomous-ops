@@ -490,7 +490,7 @@ Transform awesome-autonomous-ops into the **definitive platform** for the autono
 
 **Have ideas for future versions?**
 
-1. **Open a discussion**: [GitHub Discussions](https://github.com/nik-kale/awesome-autonomous-ops/discussions)
+1. **Open an issue**: [GitHub Issues](https://github.com/nik-kale/awesome-autonomous-ops/issues)
 2. **Submit a proposal**: [Improvement issue template](https://github.com/nik-kale/awesome-autonomous-ops/issues/new?template=improvement.yml)
 3. **Vote on proposals**: Upvote issues you'd like to see prioritized
 4. **Contribute code**: Help implement roadmap features

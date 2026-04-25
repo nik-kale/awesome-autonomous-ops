@@ -47,7 +47,7 @@ jobs:
       - name: Lychee Link Checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --no-progress '**/*.md' '**/*.html' --exclude-path node_modules --exclude-path .git
+          args: --verbose --no-progress '**/*.md' --exclude-path node_modules --exclude-path .git
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

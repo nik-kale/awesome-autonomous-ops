@@ -177,5 +177,5 @@ See [ROADMAP.md](ROADMAP.md) for complete future plans.
 
 ---
 
-[2.0.0]: https://github.com/nik-kale/awesome-autonomous-ops/compare/v1.0.0...v2.0.0
-[1.0.0]: https://github.com/nik-kale/awesome-autonomous-ops/releases/tag/v1.0.0
+[2.0.0]: https://github.com/nik-kale/awesome-autonomous-ops/compare/d6a58e7...main
+[1.0.0]: https://github.com/nik-kale/awesome-autonomous-ops/commit/d6a58e7
