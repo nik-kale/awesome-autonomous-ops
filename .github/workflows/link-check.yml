@@ -9,6 +9,10 @@ on:
     paths:
       - '**.md'
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   link-checker:
     name: Check All Links
@@ -74,8 +78,10 @@ jobs:
             });
 
       - name: Notify Slack on link check failure
-        if: failure()
+        if: failure() && env.SLACK_WEBHOOK_URL != ''
         uses: slackapi/slack-github-action@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
