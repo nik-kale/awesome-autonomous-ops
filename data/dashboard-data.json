@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-04-26T04:48:12.882216+00:00",
+  "overview": {
+    "total_projects": 38,
+    "total_stars": 566854,
+    "total_forks": 97215
+  },
+  "freshness_distribution": {
+    "moderate": 8,
+    "active": 25
+  },
+  "top_languages": {
+    "Python": 17,
+    "TypeScript": 6,
+    "Go": 4,
+    "null": 2,
+    "MDX": 1,
+    "Groovy": 1,
+    "C++": 1,
+    "Jupyter Notebook": 1
+  },
+  "license_distribution": {
+    "Apache-2.0": 16,
+    "MIT": 12,
+    "NOASSERTION": 4,
+    "AGPL-3.0": 1
+  }
+}

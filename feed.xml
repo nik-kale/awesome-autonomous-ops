@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Awesome Autonomous Operations - New Projects</title>
+    <link>https://github.com/nik-kale/awesome-autonomous-ops</link>
+    <description>New additions to the Awesome Autonomous Operations curated list</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Apr 2026 04:48:13 +0000</lastBuildDate>
+    <atom:link href="https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LangKit - Compliance, Governance, and Safety for AI Ops</title>
+      <link>https://github.com/whylabs/langkit</link>
+      <guid isPermaLink="true">https://github.com/whylabs/langkit</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Compliance, Governance, and Safety for AI Ops</category>
+      <description>LLM observability and monitoring toolkit. Provides safety metrics and guardrail monitoring for AI agents.<br/><br/>Category: Compliance, Governance, and Safety for AI Ops<br/><a href="https://github.com/whylabs/langkit">https://github.com/whylabs/langkit</a></description>
+    </item>
+    <item>
+      <title>Rundeck - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/rundeck/rundeck</link>
+      <guid isPermaLink="true">https://github.com/rundeck/rundeck</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Runbook automation and operational orchestration platform. Can be integrated with AI agents for intelligent remediation workflows.<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/rundeck/rundeck">https://github.com/rundeck/rundeck</a></description>
+    </item>
+    <item>
+      <title>Robusta - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/robusta-dev/robusta</link>
+      <guid isPermaLink="true">https://github.com/robusta-dev/robusta</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Kubernetes troubleshooting and automation platform. Provides diagnostic playbooks and auto-remediation capabilities.<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/robusta-dev/robusta">https://github.com/robusta-dev/robusta</a></description>
+    </item>
+    <item>
+      <title>awesome-mcp-servers - MCP Servers &amp; Gateways for Autonomous Ops</title>
+      <link>https://github.com/punkpeye/awesome-mcp-servers</link>
+      <guid isPermaLink="true">https://github.com/punkpeye/awesome-mcp-servers</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>MCP Servers &amp; Gateways for Autonomous Ops</category>
+      <description>Curated list of MCP servers across domains. Filter for observability, infrastructure, and DevOps categories for ops-relevant integrations.<br/><br/>Category: MCP Servers &amp; Gateways for Autonomous Ops<br/><a href="https://github.com/punkpeye/awesome-mcp-servers">https://github.com/punkpeye/awesome-mcp-servers</a></description>
+    </item>
+    <item>
+      <title>PulseMCP - MCP Servers &amp; Gateways for Autonomous Ops</title>
+      <link>https://github.com/pulsemcp/mcp-servers</link>
+      <guid isPermaLink="true">https://github.com/pulsemcp/mcp-servers</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>MCP Servers &amp; Gateways for Autonomous Ops</category>
+      <description>Community directory of MCP servers, including ops-focused implementations for observability and infrastructure tools.<br/><br/>Category: MCP Servers &amp; Gateways for Autonomous Ops<br/><a href="https://github.com/pulsemcp/mcp-servers">https://github.com/pulsemcp/mcp-servers</a></description>
+    </item>
+    <item>
+      <title>OpenTelemetry Demo - Datasets, Simulators, and Labs</title>
+      <link>https://github.com/open-telemetry/opentelemetry-demo</link>
+      <guid isPermaLink="true">https://github.com/open-telemetry/opentelemetry-demo</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Datasets, Simulators, and Labs</category>
+      <description>Microservices demo with full observability instrumentation. Provides realistic telemetry data for testing diagnostic agents.<br/><br/>Category: Datasets, Simulators, and Labs<br/><a href="https://github.com/open-telemetry/opentelemetry-demo">https://github.com/open-telemetry/opentelemetry-demo</a></description>
+    </item>
+    <item>
+      <title>Open Policy Agent (OPA) - Compliance, Governance, and Safety for AI Ops</title>
+      <link>https://github.com/open-policy-agent/opa</link>
+      <guid isPermaLink="true">https://github.com/open-policy-agent/opa</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Compliance, Governance, and Safety for AI Ops</category>
+      <description>Policy-based control framework. Can be used to define and enforce policies for AI agent actions in production.<br/><br/>Category: Compliance, Governance, and Safety for AI Ops<br/><a href="https://github.com/open-policy-agent/opa">https://github.com/open-policy-agent/opa</a></description>
+    </item>
+    <item>
+      <title>Issue Templates - Resources</title>
+      <link>https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Resources</category>
+      <description>Submit projects, report issues, suggest improvements<br/><br/>Category: Resources<br/><a href="https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose">https://github.com/nik-kale/awesome-autonomous-ops/issues/new/choose</a></description>
+    </item>
+    <item>
+      <title>Issues - Resources</title>
+      <link>https://github.com/nik-kale/awesome-autonomous-ops/issues</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/awesome-autonomous-ops/issues</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Resources</category>
+      <description>Ask questions, share ideas, report problems<br/><br/>Category: Resources<br/><a href="https://github.com/nik-kale/awesome-autonomous-ops/issues">https://github.com/nik-kale/awesome-autonomous-ops/issues</a></description>
+    </item>
+    <item>
+      <title>Secure-MCP-Gateway - Projects by the Curator</title>
+      <link>https://github.com/nik-kale/Secure-MCP-Gateway</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/Secure-MCP-Gateway</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Projects by the Curator</category>
+      <description>Security-first Model Context Protocol gateway for operational tools (Jira, Splunk, Kubernetes, GitHub, PagerDuty). Provides policy-based access control, human-in-the-loop approvals for write actions, and comprehensive audit trails for AI agent interactions with production systems.<br/><br/>Category: Projects by the Curator<br/><a href="https://github.com/nik-kale/Secure-MCP-Gateway">https://github.com/nik-kale/Secure-MCP-Gateway</a></description>
+    </item>
+    <item>
+      <title>Secure-AI-Support-Fabric - Projects by the Curator</title>
+      <link>https://github.com/nik-kale/Secure-AI-Support-Fabric</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/Secure-AI-Support-Fabric</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Projects by the Curator</category>
+      <description>Hands-on autonomous operations lab and reference implementation. Demonstrates end-to-end AI-powered incident response, from detection through diagnosis to remediation, with proper security boundaries and human oversight.<br/><br/>Category: Projects by the Curator<br/><a href="https://github.com/nik-kale/Secure-AI-Support-Fabric">https://github.com/nik-kale/Secure-AI-Support-Fabric</a></description>
+    </item>
+    <item>
+      <title>Responsible-AI-Compliance-Blueprint - Compliance, Governance, and Safety for AI Ops</title>
+      <link>https://github.com/nik-kale/Responsible-AI-Compliance-Blueprint</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/Responsible-AI-Compliance-Blueprint</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Compliance, Governance, and Safety for AI Ops</category>
+      <description>Comprehensive framework for governance, risk management, and compliance in autonomous operations systems.<br/><br/>Category: Compliance, Governance, and Safety for AI Ops<br/><a href="https://github.com/nik-kale/Responsible-AI-Compliance-Blueprint">https://github.com/nik-kale/Responsible-AI-Compliance-Blueprint</a></description>
+    </item>
+    <item>
+      <title>Ops-Agent-Desktop - Projects by the Curator</title>
+      <link>https://github.com/nik-kale/Ops-Agent-Desktop</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/Ops-Agent-Desktop</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Projects by the Curator</category>
+      <description>Visual mission control UI for autonomous SRE and support agents. Real-time visualization of agent investigations and remediations, with browser automation to show live interactions with ops consoles and dashboards.<br/><br/>Category: Projects by the Curator<br/><a href="https://github.com/nik-kale/Ops-Agent-Desktop">https://github.com/nik-kale/Ops-Agent-Desktop</a></description>
+    </item>
+    <item>
+      <title>AutoRCA-Core (ADAPT-RCA) - Projects by the Curator</title>
+      <link>https://github.com/nik-kale/AutoRCA-Core</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/AutoRCA-Core</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Projects by the Curator</category>
+      <description>Graph RAG and multi-signal root cause analysis engine for autonomous reliability. Combines time-series correlation, dependency graphs, and LLM reasoning to identify incident causes across logs, metrics, traces, and configuration changes.<br/><br/>Category: Projects by the Curator<br/><a href="https://github.com/nik-kale/AutoRCA-Core">https://github.com/nik-kale/AutoRCA-Core</a></description>
+    </item>
+    <item>
+      <title>ADAPT-Data - Datasets, Simulators, and Labs</title>
+      <link>https://github.com/nik-kale/ADAPT-Data</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/ADAPT-Data</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Datasets, Simulators, and Labs</category>
+      <description>Synthetic and anonymized operational datasets for training and evaluating RCA and diagnostic agents.<br/><br/>Category: Datasets, Simulators, and Labs<br/><a href="https://github.com/nik-kale/ADAPT-Data">https://github.com/nik-kale/ADAPT-Data</a></description>
+    </item>
+    <item>
+      <title>ADAPT-Agents - Projects by the Curator</title>
+      <link>https://github.com/nik-kale/ADAPT-Agents</link>
+      <guid isPermaLink="true">https://github.com/nik-kale/ADAPT-Agents</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Projects by the Curator</category>
+      <description>Modular library of diagnostic and troubleshooting agents for common operational scenarios. Designed to work with AutoRCA-Core for root cause analysis and Secure-MCP-Gateway for safe tool access.<br/><br/>Category: Projects by the Curator<br/><a href="https://github.com/nik-kale/ADAPT-Agents">https://github.com/nik-kale/ADAPT-Agents</a></description>
+    </item>
+    <item>
+      <title>txtai - Graph RAG &amp; Root Cause Analysis for Logs and Incidents</title>
+      <link>https://github.com/neuml/txtai</link>
+      <guid isPermaLink="true">https://github.com/neuml/txtai</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Graph RAG &amp; Root Cause Analysis for Logs and Incidents</category>
+      <description>Embeddings database for semantic search over logs and documentation. Enables RAG workflows for incident troubleshooting and knowledge retrieval.<br/><br/>Category: Graph RAG &amp; Root Cause Analysis for Logs and Incidents<br/><a href="https://github.com/neuml/txtai">https://github.com/neuml/txtai</a></description>
+    </item>
+    <item>
+      <title>Playwright - Browser &amp; Desktop Ops Agents</title>
+      <link>https://github.com/microsoft/playwright</link>
+      <guid isPermaLink="true">https://github.com/microsoft/playwright</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Browser &amp; Desktop Ops Agents</category>
+      <description>Browser automation library with robust APIs. Foundation for building custom ops agents that interact with web dashboards.<br/><br/>Category: Browser &amp; Desktop Ops Agents<br/><a href="https://github.com/microsoft/playwright">https://github.com/microsoft/playwright</a></description>
+    </item>
+    <item>
+      <title>LogHub - Datasets, Simulators, and Labs</title>
+      <link>https://github.com/logpai/loghub</link>
+      <guid isPermaLink="true">https://github.com/logpai/loghub</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Datasets, Simulators, and Labs</category>
+      <description>Large collection of real-world system logs for research and development. Useful for training log analysis and anomaly detection models.<br/><br/>Category: Datasets, Simulators, and Labs<br/><a href="https://github.com/logpai/loghub">https://github.com/logpai/loghub</a></description>
+    </item>
+    <item>
+      <title>LaVague - Browser &amp; Desktop Ops Agents</title>
+      <link>https://github.com/lavague-ai/LaVague</link>
+      <guid isPermaLink="true">https://github.com/lavague-ai/LaVague</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Browser &amp; Desktop Ops Agents</category>
+      <description>AI-powered web agent framework for automating browser interactions. Can be adapted for ops console navigation.<br/><br/>Category: Browser &amp; Desktop Ops Agents<br/><a href="https://github.com/lavague-ai/LaVague">https://github.com/lavague-ai/LaVague</a></description>
+    </item>
+    <item>
+      <title>LangGraph - Graph RAG &amp; Root Cause Analysis for Logs and Incidents</title>
+      <link>https://github.com/langchain-ai/langgraph</link>
+      <guid isPermaLink="true">https://github.com/langchain-ai/langgraph</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Graph RAG &amp; Root Cause Analysis for Logs and Incidents</category>
+      <description>Framework for building stateful, graph-based AI workflows. Useful for orchestrating multi-step diagnostic and remediation processes with cyclical reasoning.<br/><br/>Category: Graph RAG &amp; Root Cause Analysis for Logs and Incidents<br/><a href="https://github.com/langchain-ai/langgraph">https://github.com/langchain-ai/langgraph</a></description>
+    </item>
+    <item>
+      <title>Kubiya - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/kubiyabot/community-tools</link>
+      <guid isPermaLink="true">https://github.com/kubiyabot/community-tools</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Conversational AI agent for DevOps workflows. Integrates with Kubernetes, Terraform, and CI/CD pipelines for automated operations.<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/kubiyabot/community-tools">https://github.com/kubiyabot/community-tools</a></description>
+    </item>
+    <item>
+      <title>KubeStellar Console - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/kubestellar/console</link>
+      <guid isPermaLink="true">https://github.com/kubestellar/console</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Open source AI-powered multi-cluster Kubernetes dashboard with built-in AI chat for autonomous cluster troubleshooting, mission-based operations, and AI-guided remediation. 20+ CNCF integrations (Argo, Kyverno, Prometheus, Falco, OPA/Gatekeeper). CNCF Sandbox project (Apache 2.0).<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/kubestellar/console">https://github.com/kubestellar/console</a></description>
+    </item>
+    <item>
+      <title>MCP Servers for Kubernetes - MCP Servers &amp; Gateways for Autonomous Ops</title>
+      <link>https://github.com/kubernetes/kubernetes</link>
+      <guid isPermaLink="true">https://github.com/kubernetes/kubernetes</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>MCP Servers &amp; Gateways for Autonomous Ops</category>
+      <description>MCP-compatible interfaces for Kubernetes resources. Enables AI agents to query cluster state and (with proper guardrails) execute kubectl commands.<br/><br/>Category: MCP Servers &amp; Gateways for Autonomous Ops<br/><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></description>
+    </item>
+    <item>
+      <title>Gremlin - Datasets, Simulators, and Labs</title>
+      <link>https://github.com/gremlin/gremlin-python</link>
+      <guid isPermaLink="true">https://github.com/gremlin/gremlin-python</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Datasets, Simulators, and Labs</category>
+      <description>Chaos engineering tools and failure injection. Enables controlled testing of agent response to production incidents.<br/><br/>Category: Datasets, Simulators, and Labs<br/><a href="https://github.com/gremlin/gremlin-python">https://github.com/gremlin/gremlin-python</a></description>
+    </item>
+    <item>
+      <title>GitHub MCP Server - MCP Servers &amp; Gateways for Autonomous Ops</title>
+      <link>https://github.com/github/github-mcp-server</link>
+      <guid isPermaLink="true">https://github.com/github/github-mcp-server</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>MCP Servers &amp; Gateways for Autonomous Ops</category>
+      <description>GitHub&apos;s official MCP server for GitHub API access. Useful for automated incident ticket creation and PR-based remediation workflows.<br/><br/>Category: MCP Servers &amp; Gateways for Autonomous Ops<br/><a href="https://github.com/github/github-mcp-server">https://github.com/github/github-mcp-server</a></description>
+    </item>
+    <item>
+      <title>Falco - Compliance, Governance, and Safety for AI Ops</title>
+      <link>https://github.com/falcosecurity/falco</link>
+      <guid isPermaLink="true">https://github.com/falcosecurity/falco</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Compliance, Governance, and Safety for AI Ops</category>
+      <description>Runtime security monitoring for cloud-native environments. Useful for detecting anomalous agent behavior and policy violations.<br/><br/>Category: Compliance, Governance, and Safety for AI Ops<br/><a href="https://github.com/falcosecurity/falco">https://github.com/falcosecurity/falco</a></description>
+    </item>
+    <item>
+      <title>Haystack - Graph RAG &amp; Root Cause Analysis for Logs and Incidents</title>
+      <link>https://github.com/deepset-ai/haystack</link>
+      <guid isPermaLink="true">https://github.com/deepset-ai/haystack</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Graph RAG &amp; Root Cause Analysis for Logs and Incidents</category>
+      <description>End-to-end framework for building RAG pipelines. Can be adapted for log analysis and incident documentation search.<br/><br/>Category: Graph RAG &amp; Root Cause Analysis for Logs and Incidents<br/><a href="https://github.com/deepset-ai/haystack">https://github.com/deepset-ai/haystack</a></description>
+    </item>
+    <item>
+      <title>Chaos Mesh - Datasets, Simulators, and Labs</title>
+      <link>https://github.com/chaos-mesh/chaos-mesh</link>
+      <guid isPermaLink="true">https://github.com/chaos-mesh/chaos-mesh</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Datasets, Simulators, and Labs</category>
+      <description>Chaos engineering platform for Kubernetes. Useful for generating realistic failure scenarios to test autonomous remediation.<br/><br/>Category: Datasets, Simulators, and Labs<br/><a href="https://github.com/chaos-mesh/chaos-mesh">https://github.com/chaos-mesh/chaos-mesh</a></description>
+    </item>
+    <item>
+      <title>browser-use - Browser &amp; Desktop Ops Agents</title>
+      <link>https://github.com/browser-use/browser-use</link>
+      <guid isPermaLink="true">https://github.com/browser-use/browser-use</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Browser &amp; Desktop Ops Agents</category>
+      <description>Framework for building AI agents that control web browsers. Useful for navigating dashboards and consoles that lack APIs.<br/><br/>Category: Browser &amp; Desktop Ops Agents<br/><a href="https://github.com/browser-use/browser-use">https://github.com/browser-use/browser-use</a></description>
+    </item>
+    <item>
+      <title>Ansible Rulebooks - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/ansible/ansible-rulebook</link>
+      <guid isPermaLink="true">https://github.com/ansible/ansible-rulebook</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Event-driven automation using Ansible. Enables reactive remediation based on observability signals and alerts.<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/ansible/ansible-rulebook">https://github.com/ansible/ansible-rulebook</a></description>
+    </item>
+    <item>
+      <title>StackStorm - Agentic Remediation &amp; Runbooks</title>
+      <link>https://github.com/StackStorm/st2</link>
+      <guid isPermaLink="true">https://github.com/StackStorm/st2</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Agentic Remediation &amp; Runbooks</category>
+      <description>Event-driven automation platform for auto-remediation. Connects sensors, triggers, and actions across infrastructure and tools.<br/><br/>Category: Agentic Remediation &amp; Runbooks<br/><a href="https://github.com/StackStorm/st2">https://github.com/StackStorm/st2</a></description>
+    </item>
+    <item>
+      <title>Skyvern - Browser &amp; Desktop Ops Agents</title>
+      <link>https://github.com/Skyvern-AI/skyvern</link>
+      <guid isPermaLink="true">https://github.com/Skyvern-AI/skyvern</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Browser &amp; Desktop Ops Agents</category>
+      <description>Browser automation framework using computer vision and LLMs. Enables agents to interact with complex web UIs without brittle selectors.<br/><br/>Category: Browser &amp; Desktop Ops Agents<br/><a href="https://github.com/Skyvern-AI/skyvern">https://github.com/Skyvern-AI/skyvern</a></description>
+    </item>
+    <item>
+      <title>NeMo Guardrails - Compliance, Governance, and Safety for AI Ops</title>
+      <link>https://github.com/NVIDIA/NeMo-Guardrails</link>
+      <guid isPermaLink="true">https://github.com/NVIDIA/NeMo-Guardrails</guid>
+      <pubDate>Sun, 26 Apr 2026 04:48:13 +0000</pubDate>
+      <category>Compliance, Governance, and Safety for AI Ops</category>
+      <description>Framework for adding programmable guardrails to LLM applications. Applicable to constraining agent behavior in ops workflows.<br/><br/>Category: Compliance, Governance, and Safety for AI Ops<br/><a href="https://github.com/NVIDIA/NeMo-Guardrails">https://github.com/NVIDIA/NeMo-Guardrails</a></description>
+    </item>
+  </channel>
+</rss>
