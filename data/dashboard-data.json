@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-04T05:20:39.940276+00:00",
+  "generated_at": "2026-05-05T04:50:03.940434+00:00",
   "overview": {
     "total_projects": 38,
-    "total_stars": 571079,
-    "total_forks": 98034
+    "total_stars": 571547,
+    "total_forks": 98053
   },
   "freshness_distribution": {
     "moderate": 8,
@@ -20,9 +20,9 @@
     "Jupyter Notebook": 1
   },
   "license_distribution": {
-    "Apache-2.0": 15,
+    "Apache-2.0": 16,
     "MIT": 12,
-    "NOASSERTION": 5,
+    "NOASSERTION": 4,
     "AGPL-3.0": 1
   }
 }
