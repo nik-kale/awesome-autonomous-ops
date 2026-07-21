@@ -1,20 +1,19 @@
 {
-  "generated_at": "2026-07-20T05:24:06.622774+00:00",
+  "generated_at": "2026-07-21T04:53:54.716351+00:00",
   "overview": {
     "total_projects": 38,
-    "total_stars": 609310,
-    "total_forks": 106628
+    "total_stars": 609752,
+    "total_forks": 106754
   },
   "freshness_distribution": {
     "moderate": 8,
     "active": 25
   },
   "top_languages": {
-    "Python": 17,
+    "Python": 18,
     "TypeScript": 6,
     "Go": 4,
     "null": 2,
-    "MDX": 1,
     "Groovy": 1,
     "C++": 1,
     "Jupyter Notebook": 1
