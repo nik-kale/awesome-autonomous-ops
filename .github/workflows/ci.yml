@@ -53,7 +53,7 @@ jobs:
         continue-on-error: true
 
       - name: Spell check
-        uses: streetsidesoftware/cspell-action@v5
+        uses: streetsidesoftware/cspell-action@v8
         with:
           config: '.github/cspell.json'
           files: '**/*.md'
