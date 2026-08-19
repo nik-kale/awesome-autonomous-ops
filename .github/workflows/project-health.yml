@@ -71,7 +71,7 @@ jobs:
 
       - name: Create issue for archived projects
         if: hashFiles('data/archived-projects.json') != ''
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
