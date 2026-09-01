@@ -93,6 +93,8 @@ Model Context Protocol servers and gateways that expose operational tools, ticke
 
 - **[MCP Servers for Kubernetes](https://github.com/kubernetes/kubernetes)** – MCP-compatible interfaces for Kubernetes resources. Enables AI agents to query cluster state and (with proper guardrails) execute kubectl commands.
 
+- **[SandBase Harness](https://github.com/sandbaseai/sandbase-harness)** – Self-hosted MCP bridge for agent sessions, approvals, audit/replay, and backend-selectable Docker/Kubernetes execution sandboxes.
+
 - **[PulseMCP](https://github.com/pulsemcp/mcp-servers)** – Community directory of MCP servers, including ops-focused implementations for observability and infrastructure tools.
 
 - **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** – Curated list of MCP servers across domains. Filter for observability, infrastructure, and DevOps categories for ops-relevant integrations.
