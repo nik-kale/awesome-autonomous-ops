@@ -5,15 +5,7 @@
     <link>https://github.com/nik-kale/awesome-autonomous-ops</link>
     <description>New additions to the Awesome Autonomous Operations curated list</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Sep 2026 06:50:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 06:29:25 +0000</lastBuildDate>
     <atom:link href="https://raw.githubusercontent.com/nik-kale/awesome-autonomous-ops/main/feed.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SandBase Harness - MCP Servers &amp; Gateways for Autonomous Ops</title>
-      <link>https://github.com/sandbaseai/sandbase-harness</link>
-      <guid isPermaLink="true">https://github.com/sandbaseai/sandbase-harness</guid>
-      <pubDate>Tue, 01 Sep 2026 06:50:46 +0000</pubDate>
-      <category>MCP Servers &amp; Gateways for Autonomous Ops</category>
-      <description>Self-hosted MCP bridge for agent sessions, approvals, audit/replay, and backend-selectable Docker/Kubernetes execution sandboxes.<br/><br/>Category: MCP Servers &amp; Gateways for Autonomous Ops<br/><a href="https://github.com/sandbaseai/sandbase-harness">https://github.com/sandbaseai/sandbase-harness</a></description>
-    </item>
   </channel>
 </rss>
