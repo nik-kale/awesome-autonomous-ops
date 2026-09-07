@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Auto-label based on files changed
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const { data: files } = await github.rest.pulls.listFiles({
@@ -67,7 +67,7 @@ jobs:
             }
 
       - name: Validate PR description
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const pr = context.payload.pull_request;
@@ -82,7 +82,7 @@ jobs:
             }
 
       - name: Check for new project submission
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const { data: files } = await github.rest.pulls.listFiles({
