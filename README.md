@@ -128,6 +128,7 @@ Tools and frameworks for establishing guardrails, approval workflows, policy enf
 - **[NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails)** – Framework for adding programmable guardrails to LLM applications. Applicable to constraining agent behavior in ops workflows.
 
 - **[LangKit](https://github.com/whylabs/langkit)** – LLM observability and monitoring toolkit. Provides safety metrics and guardrail monitoring for AI agents.
+- **[YYLO](https://github.com/yylo-dev/yylo)** – Command-line orchestrator for coding agents: typed validation, merge, and release-readiness boundaries, risk-based review, receipt-backed evidence.
 
 ## Datasets, Simulators, and Labs
 
