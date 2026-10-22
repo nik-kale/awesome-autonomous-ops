@@ -25,6 +25,7 @@ Before proposing a new entry, please ensure it meets these criteria:
 1. **Open Source**: The project must be open source with a recognized license (MIT, Apache 2.0, GPL, etc.). Commercial-only or closed-source tools are not eligible.
 
 2. **Relevance**: The project must be directly relevant to **autonomous operations, SRE, DevOps, or support workflows**. General-purpose AI tools, chatbots without ops integration, or generic automation frameworks typically don't qualify unless they have clear application to operational reliability.
+   - The deciding question is whether a tool acts on *running production systems* or on *source code*. Software development lifecycle tooling is out of scope.
 
 3. **Maintenance**: The project should show signs of active maintenance or be a well-established, stable tool. Check for:
    - Recent commits (within the last 12 months for active projects)
@@ -107,6 +108,9 @@ Beyond adding new projects, you can contribute by:
 To maintain focus and quality, the following will generally not be accepted:
 
 - **Generic AI/LLM tools** without clear operational focus (e.g., general-purpose chatbots, content generation tools).
+- **Software development lifecycle tooling**: Coding agents, agent harnesses, code review and merge-gating systems, CI/CD orchestrators, and release managers. These govern code, not running systems.
+- **Guardrail vocabulary without production scope**: The words guardrails, approval workflows, or audit trails do not by themselves fit the Compliance section, which covers agents acting in production.
+- **Mass or templated submissions**: The same project campaigned across many unrelated lists, argued into whatever category each one has. Fit reasoning counts only when the primary purpose matches.
 - **Closed-source or commercial-only products** without an open-source core.
 - **Abandoned projects** with no maintenance activity in 2+ years and no clear indication of stability/completion.
 - **Self-promotion without substance**: Projects must stand on their own merit. If you're submitting your own project, ensure it meets all quality and relevance criteria.
