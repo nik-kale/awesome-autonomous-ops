@@ -34,21 +34,25 @@ Comparison of tools for AI-powered incident diagnosis and root cause analysis.
 ### Recommendations
 
 **Choose txtai if:**
+
 - You need simple semantic search over logs
 - You want minimal setup complexity
 - You're building a custom solution from scratch
 
 **Choose Haystack if:**
+
 - You need full RAG pipeline with document retrieval
 - You want pre-built integrations with vector DBs
 - You're primarily working with documentation/runbooks
 
 **Choose LangGraph if:**
+
 - You need complex multi-step diagnostic workflows
 - You want full control over agent behavior
 - You have engineering resources to build custom logic
 
 **Choose AutoRCA-Core if:**
+
 - You need production-ready RCA specifically for ops
 - You want multi-signal correlation out of the box
 - You need dependency graph integration
@@ -77,26 +81,31 @@ Comparison of systems for autonomous or orchestrated remediation.
 ### Recommendations
 
 **Choose StackStorm if:**
+
 - You need sophisticated event-driven automation
 - You're orchestrating across many different systems
 - You have complex conditional logic in workflows
 
 **Choose Rundeck if:**
+
 - You need a GUI for runbook execution
 - You want job scheduling and manual triggers
 - You're in a traditional ops environment
 
 **Choose Ansible Rulebooks if:**
+
 - You're already using Ansible
 - You want familiar YAML-based configuration
 - You need reactive automation based on events
 
 **Choose Robusta if:**
+
 - You're focused exclusively on Kubernetes
 - You want out-of-the-box diagnostic playbooks
 - You need quick time-to-value
 
 **Choose Kubiya if:**
+
 - You want conversational (Slack/Teams) interface
 - You need AI-powered action recommendations
 - You prefer SaaS over self-hosted
@@ -125,18 +134,21 @@ Comparison of Model Context Protocol implementations for ops tools.
 ### Recommendations
 
 **Choose Secure-MCP-Gateway if:**
+
 - You need enterprise-grade security controls
 - You're exposing multiple systems to AI
 - You require human approval for write operations
 - You need compliance audit trails
 
 **Choose Individual MCP Servers if:**
+
 - You're in development/testing phase
 - You need single-system integration
 - Security requirements are lower
 - You want minimal setup
 
 **Choose PulseMCP if:**
+
 - You're discovering what MCP servers exist
 - You want community-built integrations
 - You need inspiration for custom servers
@@ -165,27 +177,32 @@ Comparison of tools for automating web-based ops consoles.
 ### Recommendations
 
 **Choose Playwright if:**
+
 - You need production-stable browser automation
 - You're comfortable writing explicit scripts
 - You don't need AI-powered adaptation
 - You want the fastest execution
 
 **Choose browser-use if:**
+
 - You want AI to navigate based on natural language
 - You need adaptive interaction with changing UIs
 - You're building agent-driven workflows
 
 **Choose Skyvern if:**
+
 - You need computer vision for complex UIs
 - Traditional selectors are too brittle
 - You're automating visually complex dashboards
 
 **Choose LaVague if:**
+
 - You're building web agents for end-users
 - You need natural language task execution
 - You want pre-built agent patterns
 
 **Choose Selenium if:**
+
 - You have existing Selenium infrastructure
 - You need widest browser compatibility
 - You're maintaining legacy automation
@@ -214,21 +231,25 @@ Comparison of tools for securing and governing AI agents in production.
 ### Recommendations
 
 **Choose OPA if:**
+
 - You need fine-grained policy control
 - You're defining what actions agents can take
 - You want declarative policy as code
 
 **Choose Falco if:**
+
 - You're monitoring runtime behavior in K8s
 - You need to detect anomalous agent actions
 - You want alerts on policy violations
 
 **Choose NeMo Guardrails if:**
+
 - You need to constrain LLM outputs
 - You want to prevent specific phrases/topics
 - You're implementing conversational agents
 
 **Choose LangKit if:**
+
 - You need observability into LLM behavior
 - You want metrics on quality, cost, latency
 - You're monitoring multiple LLM interactions
@@ -236,6 +257,7 @@ Comparison of tools for securing and governing AI agents in production.
 ### Recommended Stack for Production
 
 **Comprehensive Governance:**
+
 1. **OPA** for action-level policies
 2. **Falco** for runtime anomaly detection
 3. **NeMo Guardrails** for LLM output constraints
@@ -256,6 +278,7 @@ Approximate monthly costs for autonomous ops infrastructure (assumes medium-scal
 | **Total/Month** | ~$300 | ~$2000 | ~$8000 |
 
 **Note:** Costs vary widely based on:
+
 - Number of incidents/investigations
 - Complexity of queries (token usage)
 - Infrastructure scale

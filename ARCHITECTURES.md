@@ -44,7 +44,7 @@ Every autonomous ops architecture includes:
 
 ### Architecture Diagram
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                         Engineer UI (Slack/Web)                  │
 └────────────────────────────┬────────────────────────────────────┘
@@ -156,7 +156,7 @@ spec:
 
 ### Architecture Diagram
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │                  Engineer UI + Approval Portal                │
 └────────┬──────────────────────────────┬────────────────────────┘
@@ -248,7 +248,8 @@ deny {
 2. **Agent diagnoses**: OOMKilled due to memory leak in recent deployment
 3. **Agent proposes**: "Rollback to version 1.2.3 and restart affected pods"
 4. **Agent requests approval**:
-   ```
+
+   ```text
    🚨 Remediation Approval Required
 
    Incident: checkout-service crash loop
@@ -264,6 +265,7 @@ deny {
 
    [Approve] [Reject] [Modify]
    ```
+
 5. **Engineer approves**: Click "Approve" in Slack
 6. **Agent executes**: Via Secure-MCP-Gateway
 7. **Agent monitors**: Confirms error rate drops, incident resolved
@@ -271,24 +273,28 @@ deny {
 ### Approval Workflow Tiers
 
 **Tier 1: Auto-Approve (no human needed)**
+
 - Read operations
 - Log queries
 - Metric collection
 - Status checks
 
 **Tier 2: Single Approval (SRE on-call)**
+
 - Restart pods
 - Scale replicas (within limits)
 - Clear caches
 - Rollback deployments
 
 **Tier 3: Dual Approval (SRE + Manager)**
+
 - Large-scale changes (>50% of replicas)
 - Database modifications
 - Security-sensitive operations
 - Cross-service changes
 
 **Tier 4: Prohibited (always denied)**
+
 - Delete production resources
 - Modify secrets/credentials
 - Disable security controls
@@ -304,7 +310,7 @@ deny {
 
 ### Architecture Diagram
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────┐
 │                    Autonomous Ops Platform                      │
 │                                                                 │
@@ -343,12 +349,14 @@ deny {
 ### Key Differences from Architecture 2
 
 **Autonomous Decision Making:**
+
 - Pre-approved action categories don't need human confirmation
 - Circuit breakers automatically pause if error rate increases
 - Multi-agent coordination for complex incidents
 - Continuous learning from successes and failures
 
 **Advanced Safety:**
+
 ```python
 class CircuitBreaker:
     """Prevents runaway automation."""
@@ -379,12 +387,14 @@ class CircuitBreaker:
 After 90 days of successful HITL operation with <5% error rate:
 
 **Auto-Approved (no confirmation needed):**
+
 - Restart single crashed pod
 - Scale replicas ±20% within min/max bounds
 - Clear application caches
 - Rollback deployment to last known good (if <30min old)
 
 **Still Require Approval:**
+
 - Multi-pod restarts (>3 pods)
 - Large-scale scaling (>50% change)
 - Cross-service changes
@@ -394,7 +404,7 @@ After 90 days of successful HITL operation with <5% error rate:
 
 Complex incidents may involve multiple specialized agents:
 
-```
+```text
 Incident: E-commerce checkout flow degraded
 
 ┌─────────────────┐
@@ -437,6 +447,7 @@ Each agent has domain expertise (frontend, database, networking) and they collab
 Instrument agent behavior as rigorously as production services:
 
 **Metrics to Track:**
+
 - Agent invocations per hour
 - LLM tokens consumed (cost tracking)
 - Tool call latency
@@ -445,6 +456,7 @@ Instrument agent behavior as rigorously as production services:
 - False positive rate
 
 **Logging:**
+
 ```json
 {
   "timestamp": "2025-11-23T10:15:30Z",
@@ -459,6 +471,7 @@ Instrument agent behavior as rigorously as production services:
 ```
 
 **Dashboards:**
+
 - Agent performance dashboard (Grafana)
 - Cost tracking ($/incident)
 - MTTR comparison (with vs without agent)
@@ -468,6 +481,7 @@ Instrument agent behavior as rigorously as production services:
 **Token Usage Strategies:**
 
 1. **Use smaller models for classification:**
+
    ```python
    # Use Haiku for simple tasks
    if task_complexity == "low":
@@ -477,6 +491,7 @@ Instrument agent behavior as rigorously as production services:
    ```
 
 2. **Cache common queries:**
+
    ```python
    # Cache runbook retrievals
    @lru_cache(maxsize=100)
@@ -485,6 +500,7 @@ Instrument agent behavior as rigorously as production services:
    ```
 
 3. **Batch log analysis:**
+
    ```python
    # Analyze logs in batches, not one-by-one
    logs = get_recent_logs(service, limit=100)
@@ -492,13 +508,14 @@ Instrument agent behavior as rigorously as production services:
    ```
 
 **Estimated Costs (100 incidents/month):**
+
 - **Architecture 1** (Read-only): ~$200/month
 - **Architecture 2** (HITL): ~$500/month
 - **Architecture 3** (Full auto): ~$1500/month
 
 ### Data Flow & Security Boundaries
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                      DMZ / Edge                              │
 │  - TLS termination                                           │
@@ -591,7 +608,7 @@ Lightweight agents per service + centralized coordinator:
 
 ### Network Segmentation
 
-```
+```text
 ┌──────────────────┐
 │  Agent Network   │  (Restricted)
 └────────┬─────────┘
@@ -639,6 +656,7 @@ rules:
 3. **Consider Architecture 3** (full auto) only after 90 days of HITL with <5% error rate
 
 **Resources:**
+
 - [GETTING-STARTED.md](./GETTING-STARTED.md) - Implementation guide
 - [COMPARISONS.md](./COMPARISONS.md) - Tool selection
 - [SECURITY.md](./SECURITY.md) - Security best practices

@@ -7,7 +7,7 @@
 > **Deployment Date**: Q4 2024
 >
 > **Last Updated**: December 2024
-
+>
 > ⚠️ **Note**: This is a reference architecture example, not a real company deployment. It demonstrates realistic patterns and metrics based on industry best practices.
 
 ## Executive Summary
@@ -26,6 +26,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Pre-Implementation State
 
 **Challenges:**
+
 - Manual log correlation across 150 services taking 20-45 minutes per incident
 - Alert fatigue with 300+ alerts per week, 40% false positives
 - On-call engineers spending 60% of time on diagnostic toil
@@ -33,6 +34,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 - No systematic tracking of recurring failure patterns
 
 **Existing Infrastructure:**
+
 - **Observability**: Prometheus, Grafana, Loki (logs), Jaeger (traces)
 - **Orchestration**: Kubernetes 1.27, Istio service mesh
 - **Ticketing**: Jira
@@ -65,7 +67,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 
 ### Architecture Diagram
 
-```
+```text
 ┌─────────────────┐
 │ Alert Manager   │
 │ (Prometheus)    │
@@ -118,16 +120,19 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Key Design Decisions
 
 **Decision 1: Graph-based investigation over simple prompt chain**
+
 - **Rationale**: Kubernetes incidents require exploring multiple hypotheses, backtracking when paths don't lead to root cause, and correlating signals across logs/metrics/topology
 - **Trade-offs**: More complex to implement than linear prompting, but far more effective for complex failures
 - **Outcome**: 85% diagnostic accuracy vs. 45% with prompt chaining
 
 **Decision 2: Read-only analysis, no automated remediation**
+
 - **Rationale**: Organization preferred conservative approach to build trust before automating actions
 - **Trade-offs**: Still requires human to execute fixes, but dramatically faster diagnosis
 - **Outcome**: 90% engineer satisfaction, safer adoption path
 
 **Decision 3: Semantic log search over regex patterns**
+
 - **Rationale**: Microservices produce unstructured logs; embeddings find relevant logs even with different phrasing
 - **Trade-offs**: Requires embedding pre-processing, but handles log variety much better
 - **Outcome**: Found relevant logs in 95% of cases vs. 60% with regex
@@ -135,11 +140,13 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Security & Governance
 
 **Access Control:**
+
 - RCA system has read-only access to Prometheus, Loki, Kubernetes API
 - Service account with cluster-reader role
 - No write permissions to any production system
 
 **Audit & Compliance:**
+
 - All LLM API calls logged with input/output
 - Investigation history stored for 90 days
 - Engineer approval required before viewing PII-containing logs
@@ -149,6 +156,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Phase 1: Proof of Concept (2 weeks)
 
 **Scope**:
+
 - Single namespace (non-production staging environment)
 - Manual trigger only (no automated alerts)
 - Focused on OOMKilled and CrashLoopBackOff scenarios
@@ -156,6 +164,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 **Team**: 1 SRE, 1 ML engineer (50% time)
 
 **Results**:
+
 - Successfully identified root cause in 4/5 test incidents
 - Reduced investigation time from 25min to 8min (average)
 - Decision to proceed with pilot
@@ -163,6 +172,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Phase 2: Pilot Deployment (6 weeks)
 
 **Scope**:
+
 - Production cluster (non-critical services only)
 - Automated trigger on high-severity alerts
 - Expanded to cover pod failures, deployment issues, resource exhaustion
@@ -186,11 +196,13 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 **Rollout Strategy**: Service-by-service, starting with highest-incident services
 
 **Adoption Metrics**:
+
 - Week 1: 10% of services (highest-priority)
 - Month 1: 40% of services
 - Month 3: 100% of services
 
 **User Adoption**:
+
 - 92% of on-call engineers actively using RCA reports
 - 78% report trusting the analysis "most of the time"
 
@@ -209,16 +221,19 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### Qualitative Impact
 
 **Team Experience:**
+
 - "I can now handle incidents in services I've never worked on" - Senior SRE
 - "The dependency graph visualization alone is worth it" - Platform Engineer
 - "Freed me up to actually fix issues instead of hunting for them" - On-call Engineer
 
 **Organizational Benefits:**
+
 - SRE team redirected 30% of time from diagnostics to proactive reliability work
 - Standardized incident analysis format improved team handoffs
 - Built searchable knowledge base of failure patterns
 
 **Unexpected Wins:**
+
 - RCA reports became onboarding material for new engineers
 - Identified 3 persistent issues that were previously masked by symptoms
 - Improved Prometheus query optimization through analysis of common patterns
@@ -230,10 +245,12 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 **Problem**: Initial implementation sent entire log dumps to LLM, costing $50/day for medium-traffic period
 
 **Attempted Solutions**:
+
 1. Log sampling (10% of logs) - Missed critical errors
 2. Regex pre-filtering - Too brittle for varied log formats
 
 **Final Solution**: Two-stage approach
+
 - Stage 1: txtai semantic search retrieves top 50 relevant log lines
 - Stage 2: LLM analyzes only those lines with surrounding context
 
@@ -246,6 +263,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 **Problem**: Agent got stuck in loops when investigating services that had bidirectional dependencies
 
 **Attempted Solutions**:
+
 1. Graph traversal limits (max depth 5) - Missed some root causes
 2. Simple cycle detection - Too aggressive, pruned valid paths
 
@@ -260,10 +278,12 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 **Problem**: Initial rollout faced pushback: "How do I know it's right?"
 
 **Attempted Solutions**:
+
 1. Showing confidence scores - Engineers ignored them
 2. Detailed technical explanations - Too verbose
 
-**Final Solution**: 
+**Final Solution**:
+
 - Show evidence chain: "Found ERROR in service X → correlated with spike in metric Y → dependency on failing service Z"
 - Allow engineers to drill into each step
 - Mark analysis as "high confidence" vs. "needs verification"
@@ -295,6 +315,7 @@ Implemented autonomous root cause analysis system for Kubernetes incidents using
 ### For Similar Organizations
 
 **If you're running Kubernetes at scale (50+ services):**
+
 - ✅ **Do**: Start with read-only diagnostic system before automating remediation
 - ✅ **Do**: Invest in semantic log search; regex won't scale
 - ✅ **Do**: Build explicit dependency graph; critical for accurate analysis
@@ -315,7 +336,8 @@ Before attempting this implementation, ensure you have:
 
 **Time**: 3-4 months with 1.5 FTE engineers (1 SRE + 0.5 ML engineer)
 
-**Budget**: 
+**Budget**:
+
 - Infrastructure: $500/month (embedding storage, PostgreSQL, compute)
 - LLM API: $300-800/month depending on incident volume
 - Development: ~$100K in engineering time
@@ -400,4 +422,3 @@ results = index.search(query, limit=50)
 **Last updated**: December 2024
 
 **Version**: 1.0
-
