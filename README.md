@@ -95,6 +95,8 @@ Model Context Protocol servers and gateways that expose operational tools, ticke
 
 - **[SandBase Harness](https://github.com/sandbaseai/sandbase-harness)** – Self-hosted MCP bridge for agent sessions, approvals, audit/replay, and backend-selectable Docker/Kubernetes execution sandboxes.
 
+- **[SolidPing](https://github.com/fclairamb/solidping)** – Self-hosted uptime monitoring with an MCP server (remote OAuth 2.1 or stdio): agents read checks, results and incidents, and manage checks.
+
 - **[PulseMCP](https://github.com/pulsemcp/mcp-servers)** – Community directory of MCP servers, including ops-focused implementations for observability and infrastructure tools.
 
 - **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** – Curated list of MCP servers across domains. Filter for observability, infrastructure, and DevOps categories for ops-relevant integrations.
