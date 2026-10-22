@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g markdownlint-cli markdown-link-check
+          npm install -g markdownlint-cli@0.49.1 markdown-link-check
           pip install -r requirements.txt
 
       - name: Markdown linting

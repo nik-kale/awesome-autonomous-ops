@@ -27,11 +27,13 @@
 ### Pre-Implementation State
 
 **Challenges:**
+
 - [Describe pain points - high MTTR, alert fatigue, manual toil, etc.]
 - [Quantify where possible - e.g., "Average MTTR of 45 minutes"]
 - [Organizational context - team size, on-call burden, etc.]
 
 **Existing Infrastructure:**
+
 - **Observability**: [Prometheus, Grafana, Splunk, etc.]
 - **Orchestration**: [Kubernetes, Docker, etc.]
 - **Ticketing**: [Jira, ServiceNow, etc.]
@@ -61,7 +63,7 @@
 
 ### Architecture Diagram
 
-```
+```text
 [Insert ASCII diagram or link to image]
 
 Example:
@@ -99,11 +101,13 @@ Example:
 ### Key Design Decisions
 
 **Decision 1: [e.g., "Chose HITL over full automation"]**
+
 - **Rationale**: [Why this choice]
 - **Trade-offs**: [What you gave up]
 - **Outcome**: [How it worked out]
 
 **Decision 2: [Another key choice]**
+
 - **Rationale**: [Why]
 - **Trade-offs**: [Pros/cons]
 - **Outcome**: [Result]
@@ -111,12 +115,15 @@ Example:
 ### Security & Governance
 
 **Access Control:**
+
 - [Describe RBAC, policy enforcement, etc.]
 
 **Approval Workflows:**
+
 - [Describe HITL process, if applicable]
 
 **Audit & Compliance:**
+
 - [How actions are logged and monitored]
 
 ## Implementation Journey
@@ -126,13 +133,16 @@ Example:
 **Timeline**: [Duration, e.g., "2 weeks"]
 
 **Scope**:
+
 - [What was included in POC]
 - [What was excluded]
 
 **Team**:
+
 - [Team size and composition]
 
 **Results**:
+
 - [Key learnings]
 - [Decision to proceed or pivot]
 
@@ -141,10 +151,12 @@ Example:
 **Timeline**: [Duration, e.g., "1 month"]
 
 **Scope**:
+
 - [Services/teams included]
 - [Limitations/constraints]
 
 **Challenges**:
+
 1. **[Challenge 1]**: [Description]
    - **Solution**: [How you solved it]
    - **Outcome**: [Result]
@@ -158,9 +170,11 @@ Example:
 **Timeline**: [Duration, e.g., "3 months"]
 
 **Rollout Strategy**:
+
 - [Gradual, all-at-once, service-by-service, etc.]
 
 **Adoption Metrics**:
+
 - [Team adoption rate]
 - [Incident coverage]
 - [User satisfaction]
@@ -180,14 +194,17 @@ Example:
 ### Qualitative Impact
 
 **Team Experience:**
+
 - [How on-call engineers feel about the system]
 - [Quotes from team members, if applicable]
 
 **Organizational Benefits:**
+
 - [e.g., "Freed up 30% of SRE time for proactive work"]
 - [e.g., "Improved service reliability - 99.9% → 99.95% uptime"]
 
 **Unexpected Wins:**
+
 - [Positive surprises]
 - [Secondary benefits]
 
@@ -198,6 +215,7 @@ Example:
 **Problem**: [Detailed description]
 
 **Attempted Solutions**:
+
 1. [First approach] - [Result: success/failure]
 2. [Second approach] - [Result]
 
@@ -241,6 +259,7 @@ Example:
 ### For Similar Organizations
 
 **If you're in [industry/scale]:**
+
 - ✅ **Do**: [Specific recommendation]
 - ✅ **Do**: [Another recommendation]
 - ❌ **Don't**: [What to avoid]
@@ -279,18 +298,21 @@ Before attempting this implementation, ensure you have:
 ### Sample Prompts
 
 **Example diagnostic prompt:**
-```
+
+```text
 [Include actual prompt used for investigation]
 ```
 
 **Example remediation planning prompt:**
-```
+
+```text
 [Include example]
 ```
 
 ### Sample Policies
 
 **OPA policy example:**
+
 ```rego
 [Include relevant policy snippet]
 ```

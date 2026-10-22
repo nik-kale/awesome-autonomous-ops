@@ -35,12 +35,14 @@ It's not about replacing humans — it's about augmenting ops teams with intelli
 ### Infrastructure Requirements
 
 **Minimum:**
+
 - Observability platform (Prometheus, Grafana, Splunk, Datadog, or similar)
 - Ticketing system (Jira, ServiceNow, GitHub Issues, or similar)
 - Kubernetes cluster (or equivalent orchestration platform)
 - LLM access (OpenAI API, Anthropic Claude, or self-hosted)
 
 **Recommended:**
+
 - Centralized logging (ELK, Loki, or similar)
 - Distributed tracing (Jaeger, Tempo, or similar)
 - Alert management (PagerDuty, Opsgenie, or similar)
@@ -96,11 +98,13 @@ For a **proof-of-concept autonomous ops system**, you need:
 ### 1. Diagnostic Layer (Choose One)
 
 **Option A: Semantic Search Over Logs** (Simplest)
+
 - **Tool**: [txtai](https://github.com/neuml/txtai)
 - **Why**: Easy to set up, works with existing logs
 - **Effort**: 1-2 days
 
 **Option B: Graph-Based RCA** (More Powerful)
+
 - **Tool**: [LangGraph](https://github.com/langchain-ai/langgraph) + custom logic
 - **Why**: Better for complex multi-signal correlation
 - **Effort**: 1-2 weeks
@@ -108,6 +112,7 @@ For a **proof-of-concept autonomous ops system**, you need:
 ### 2. Tool Access Layer
 
 **Option A: MCP Servers** (If APIs exist)
+
 - **Tools**:
   - [GitHub MCP Server](https://github.com/github/github-mcp-server)
   - [MCP Kubernetes](https://github.com/kubernetes/kubernetes) (custom implementation)
@@ -115,6 +120,7 @@ For a **proof-of-concept autonomous ops system**, you need:
 - **Effort**: 2-4 days per integration
 
 **Option B: Browser Automation** (For console-only tools)
+
 - **Tool**: [Playwright](https://github.com/microsoft/playwright)
 - **Why**: Can interact with any web UI
 - **Effort**: 3-5 days
@@ -122,11 +128,13 @@ For a **proof-of-concept autonomous ops system**, you need:
 ### 3. Safety & Governance Layer
 
 **Minimum:**
+
 - Human-in-the-loop approval for write operations
 - Audit logging of all agent actions
 - Rate limiting and circuit breakers
 
 **Tools**:
+
 - [Open Policy Agent](https://github.com/open-policy-agent/opa) for policy enforcement
 - [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) for LLM constraints
 
@@ -274,7 +282,8 @@ python incident_investigator.py
 ```
 
 Expected output:
-```
+
+```text
 Diagnosis:
 The checkout-service is experiencing a high error rate (15% vs baseline 0.5%).
 Root cause: Database connection pool exhaustion (max connections: 100, current: 98).
@@ -300,6 +309,7 @@ Recommendation: Increase connection pool size or investigate slow queries.
 **Mistake**: Vague prompts like "fix this alert."
 
 **Solution**: Provide structured prompts with:
+
 - Alert details (name, severity, affected service)
 - Expected SLOs/baselines
 - Diagnostic steps to follow
@@ -310,6 +320,7 @@ Recommendation: Increase connection pool size or investigate slow queries.
 **Mistake**: Letting agents restart production services without constraints.
 
 **Solution**: Implement:
+
 - Rate limiting (max 5 remediation actions per hour)
 - Blast radius limits (only affect single replica initially)
 - Circuit breakers (stop if error rate increases)
@@ -324,24 +335,28 @@ Recommendation: Increase connection pool size or investigate slow queries.
 ## Next Steps
 
 ### Week 1: Proof of Concept
+
 - ✅ Set up read-only MCP servers for your key tools
 - ✅ Build a simple investigation agent (as shown above)
 - ✅ Test with 5-10 historical incidents
 - ✅ Measure accuracy and latency
 
 ### Month 1: Expand Capabilities
+
 - Add more data sources (logs, traces, config changes)
 - Implement graph-based root cause analysis
 - Add human-in-the-loop approval workflow
 - Deploy to staging environment
 
 ### Month 2-3: Production Pilot
+
 - Deploy to production with read-only access
 - Run alongside human on-call engineers
 - Measure MTTR impact (target: 30-50% reduction)
 - Collect feedback and iterate
 
 ### Month 4-6: Full Automation
+
 - Add approved remediation actions (restart pods, scale replicas)
 - Implement comprehensive governance policies
 - Expand to additional teams/services
@@ -350,16 +365,19 @@ Recommendation: Increase connection pool size or investigate slow queries.
 ## Resources
 
 ### Example Projects
+
 - [Secure-MCP-Gateway](https://github.com/nik-kale/Secure-MCP-Gateway) *(coming soon)* - Reference implementation
 - [ADAPT-Agents](https://github.com/nik-kale/ADAPT-Agents) *(coming soon)* - Pre-built diagnostic agents
 - [Secure-AI-Support-Fabric](https://github.com/nik-kale/Secure-AI-Support-Fabric) *(coming soon)* - Complete lab environment
 
 ### Community
+
 - [GitHub Issues](https://github.com/nik-kale/awesome-autonomous-ops/issues) - Ask questions
 - [Case Studies](./case-studies/) - Real-world implementations
 - [Comparison Matrices](./COMPARISONS.md) - Tool selection guides
 
 ### Further Reading
+
 - [ARCHITECTURES.md](./ARCHITECTURES.md) - Reference architectures
 - [GLOSSARY.md](./GLOSSARY.md) - Terminology and concepts
 - [SECURITY.md](./SECURITY.md) - Security best practices

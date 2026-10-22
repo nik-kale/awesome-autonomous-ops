@@ -35,16 +35,17 @@ This directory contains anonymized case studies from organizations that have dep
 ### Contribute Your Case Study
 
 **Share your real-world implementation:**
+
 - [Submit via GitHub issue](https://github.com/nik-kale/awesome-autonomous-ops/issues/new?template=case_study.yml)
 - [Use the template](./templates/case-study-template.md)
 - [Email the maintainer](https://github.com/nik-kale)
 
 ### By Architecture Pattern
 
-- **Read-Only Investigation Assistants**: 
+- **Read-Only Investigation Assistants**:
   - [Kubernetes RCA System](./2025/kubernetes-rca-system.md)
   - [Slack Investigation Assistant](./2025/slack-investigation-assistant.md)
-- **HITL Remediation Systems**: 
+- **HITL Remediation Systems**:
   - [HITL Remediation System](./2025/hitl-remediation-system.md)
 - **Full Autonomous Platforms**: Coming soon - contribute yours!
 
@@ -75,6 +76,7 @@ In return:
 We understand sensitivity around production systems. You can share case studies at different anonymization levels:
 
 ### Level 1: Fully Public
+
 - Company name disclosed
 - Exact metrics shared
 - Detailed architecture diagrams
@@ -83,6 +85,7 @@ We understand sensitivity around production systems. You can share case studies 
 **Best for**: Established success stories, marketing-friendly implementations
 
 ### Level 2: Company Anonymous
+
 - Company name redacted ("Large E-commerce Company")
 - Approximate metrics (rounded)
 - Generic architecture diagrams
@@ -91,6 +94,7 @@ We understand sensitivity around production systems. You can share case studies 
 **Best for**: Most production implementations
 
 ### Level 3: Highly Anonymous
+
 - Industry only ("Financial Services")
 - Relative improvements only ("50% MTTR reduction")
 - Conceptual architecture only
@@ -135,7 +139,7 @@ Use our [template](./templates/case-study-template.md) to structure your submiss
 
 ## Example Structure
 
-```
+```text
 case-studies/
 ├── README.md (this file)
 ├── templates/

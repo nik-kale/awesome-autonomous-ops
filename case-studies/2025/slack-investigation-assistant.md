@@ -7,7 +7,7 @@
 > **Deployment Date**: Q1 2025
 >
 > **Last Updated**: December 2024
-
+>
 > ⚠️ **Note**: This is a reference architecture example, not a real company deployment. It demonstrates realistic patterns and metrics based on industry best practices.
 
 ## Executive Summary
@@ -26,6 +26,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Pre-Implementation State
 
 **Challenges:**
+
 - On-call engineers switching between 8+ tools during investigations (Splunk, Grafana, Jira, internal dashboards)
 - Context loss during incident handoffs between shifts (24/7 operations)
 - Junior engineers struggling to formulate correct Splunk queries
@@ -33,6 +34,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 - High cognitive load navigating complex permission structures across tools
 
 **Existing Infrastructure:**
+
 - **Observability**: Splunk (logs), Datadog (metrics/APM), PagerDuty (alerts)
 - **Orchestration**: Kubernetes, Terraform
 - **Ticketing**: ServiceNow
@@ -66,7 +68,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 
 ### Architecture Diagram
 
-```
+```text
 ┌─────────────────────┐
 │ Slack (Engineer)    │
 └──────────┬──────────┘
@@ -119,16 +121,19 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Key Design Decisions
 
 **Decision 1: Conversational interface over command syntax**
+
 - **Rationale**: Natural language lowers barrier for junior engineers and reduces cognitive load
 - **Trade-offs**: Requires more sophisticated NLU vs. simple command parsing
 - **Outcome**: 88% adoption vs. 30% for previous command-based tools
 
 **Decision 2: Read-only access with no write operations**
+
 - **Rationale**: Financial services compliance requires conservative approach; investigation only
 - **Trade-offs**: Cannot automate remediations, but acceptable for Phase 1
 - **Outcome**: Passed security review in 2 weeks vs. 6+ months for write access
 
 **Decision 3: User-scoped permissions via MCP gateway**
+
 - **Rationale**: Bot should not have more access than requesting engineer
 - **Trade-offs**: More complex implementation than single service account
 - **Outcome**: Critical for compliance; bot inherits user's existing RBAC
@@ -136,15 +141,18 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Security & Governance
 
 **Access Control:**
+
 - Bot uses engineer's identity for all backend calls (OAuth token passthrough)
 - OPA policies enforce service-level restrictions (e.g., production vs. staging)
 - No elevated permissions; bot cannot see more than engineer can via UI
 
 **Approval Workflows:**
+
 - N/A (read-only operations only)
 - Sensitive queries (customer data) require explicit `/confirm` command
 
 **Audit & Compliance:**
+
 - All queries logged with: engineer ID, timestamp, query text, tools accessed, data returned
 - Audit logs retained for 7 years (regulatory requirement)
 - Monthly compliance reports auto-generated
@@ -154,6 +162,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Phase 1: Proof of Concept (3 weeks)
 
 **Scope**:
+
 - Single Slack channel (#sre-poc)
 - Splunk queries only
 - 5 volunteer engineers
@@ -161,6 +170,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 **Team**: 1 senior SRE, 1 platform engineer
 
 **Results**:
+
 - 90% positive feedback from volunteers
 - Identified need for better query disambiguation ("logs for what service?")
 - Decision to proceed with pilot
@@ -168,6 +178,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Phase 2: Pilot Deployment (2 months)
 
 **Scope**:
+
 - All SRE team members (20 engineers)
 - Added Datadog metrics and Kubernetes access
 - Integrated with existing incident channels
@@ -191,6 +202,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 **Rollout Strategy**: Team-by-team (SRE → Platform → Backend → Frontend)
 
 **Adoption Metrics**:
+
 - Month 1: SRE team (20 engineers) - 100% adoption
 - Month 2: Platform team (15 engineers) - 85% adoption
 - Month 3: All engineering (120 engineers) - 88% adoption
@@ -210,16 +222,19 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### Qualitative Impact
 
 **Team Experience:**
+
 - "I can finally participate in incidents for services I don't own" - Junior Engineer
 - "Handoffs are so much easier - just `/summarize` and I have full context" - On-call Lead
 - "Reduced my stress level significantly; I don't feel lost anymore" - Mid-level Engineer
 
 **Organizational Benefits:**
+
 - Flattened learning curve for incident response skills
 - Reduced dependency on "hero" senior engineers
 - Improved documentation discovery (bot surfaces relevant runbooks)
 
 **Unexpected Wins:**
+
 - Engineers use bot during development to debug (not just incidents)
 - Bot queries revealed missing Datadog dashboards - built 12 new dashboards based on common queries
 - Generated training material from real investigation conversations
@@ -231,10 +246,12 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 **Problem**: Early beta had no rate limits; one engineer's exploratory session cost $40 in API calls
 
 **Attempted Solutions**:
+
 1. Per-user rate limit (10 queries/hour) - Too restrictive during active incidents
 2. Cost warnings after $5 spent - Ignored during incidents
 
 **Final Solution**: Tiered rate limiting
+
 - Normal mode: 20 queries/hour
 - Incident mode (in incident channel): unlimited
 - Cost dashboard visible to team lead
@@ -248,10 +265,12 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 **Problem**: Bot occasionally generated invalid Splunk queries that looked correct
 
 **Attempted Solutions**:
+
 1. Few-shot examples in prompt - Helped but not sufficient
 2. Query validation API - Too slow
 
-**Final Solution**: 
+**Final Solution**:
+
 - MCP server validates query syntax before execution
 - If invalid, error returned to agent with syntax hint
 - Agent retries with correction (max 2 attempts)
@@ -265,10 +284,12 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 **Problem**: Customer data occasionally appeared in error logs; bot could return it
 
 **Attempted Solutions**:
+
 1. PII redaction at display time - Inconsistent
 2. Block all queries mentioning customer IDs - Too restrictive
 
 **Final Solution**:
+
 - Splunk MCP server automatically redacts PII patterns (emails, SSNs, card numbers) before returning
 - Audit log captures full response for compliance review
 - `/show-redacted` command available with justification prompt
@@ -300,6 +321,7 @@ Deployed conversational AI investigation assistant integrated with Slack, provid
 ### For Similar Organizations
 
 **If you're building investigation assistants:**
+
 - ✅ **Do**: Implement user-scoped permissions (bot as user, not privileged service account)
 - ✅ **Do**: Provide conversation history export for incident reports
 - ✅ **Do**: Build rate limiting and cost controls from start
@@ -321,6 +343,7 @@ Before attempting this implementation, ensure you have:
 **Time**: 3-4 months with 2 FTE engineers
 
 **Budget**:
+
 - Infrastructure: $200/month (bot hosting, databases)
 - LLM API: $800-1500/month depending on usage
 - Development: ~$150K in engineering time
@@ -346,7 +369,8 @@ Before attempting this implementation, ensure you have:
 ### Sample Conversations
 
 **Example 1: Log Query**
-```
+
+```text
 Engineer: show me errors in payment-service in the last hour
 Bot: 🔍 Searching Splunk logs for payment-service (last 60 minutes)...
      Found 23 errors. Top 3:
@@ -362,7 +386,8 @@ Bot: 🔍 Searching Splunk logs for payment-service (last 60 minutes)...
 ```
 
 **Example 2: Incident Summary**
-```
+
+```text
 Engineer: /summarize
 Bot: 📝 Incident Summary (last 45 minutes):
      
@@ -424,4 +449,3 @@ allow {
 **Last updated**: December 2024
 
 **Version**: 1.0
-

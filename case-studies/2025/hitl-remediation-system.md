@@ -7,7 +7,7 @@
 > **Deployment Date**: Q3 2024
 >
 > **Last Updated**: December 2024
-
+>
 > ⚠️ **Note**: This is a reference architecture example, not a real company deployment. It demonstrates realistic patterns and metrics based on industry best practices.
 
 ## Executive Summary
@@ -26,6 +26,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Pre-Implementation State
 
 **Challenges:**
+
 - Manual remediation steps taking 20-40 minutes for well-understood failures
 - Legacy admin panels requiring 15+ clicks to perform common operations (no APIs)
 - Inconsistent remediation quality (different engineers followed different steps)
@@ -33,6 +34,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 - Risk of human error during late-night incidents (typos, wrong environment)
 
 **Existing Infrastructure:**
+
 - **Observability**: Elastic Stack (logs), Prometheus/Grafana (metrics)
 - **Orchestration**: Kubernetes, AWS
 - **Ticketing**: Jira
@@ -67,7 +69,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 
 ### Architecture Diagram
 
-```
+```text
 ┌─────────────────┐
 │ Alert (PagerDuty│
 │ + Prometheus)   │
@@ -128,16 +130,19 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Key Design Decisions
 
 **Decision 1: HITL instead of full automation**
+
 - **Rationale**: Healthcare compliance requires human oversight; build trust incrementally
 - **Trade-offs**: Still requires engineer to approve, but dramatically faster than manual execution
 - **Outcome**: 95% approval rate shows high trust; 87% engineer satisfaction
 
 **Decision 2: Browser automation for legacy systems**
+
 - **Rationale**: 5 critical admin panels had no APIs; rewriting them would take 12+ months
 - **Trade-offs**: More fragile than API calls, but pragmatic solution
 - **Outcome**: Handled 30% of remediation actions; 97% success rate
 
 **Decision 3: Structured action format with pre/post verification**
+
 - **Rationale**: Need to verify action succeeded and didn't cause side effects
 - **Trade-offs**: Adds complexity, but critical for safety
 - **Outcome**: Caught 8 cases where action "succeeded" but didn't fix the issue
@@ -145,16 +150,19 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Security & Governance
 
 **Access Control:**
+
 - Remediation system uses dedicated service account with limited write permissions
 - Actions are scoped to specific namespaces/services
 - Browser automation runs in isolated containers with session recording
 
 **Approval Workflows:**
+
 - All write actions require explicit engineer approval via Slack
 - Approval expires after 5 minutes (prevents stale approvals)
 - High-risk actions (production database, patient data) require secondary approval from lead
 
 **Audit & Compliance:**
+
 - All proposed and executed actions logged with: approver, timestamp, before/after state
 - Browser automation sessions recorded (video + DOM snapshots)
 - Audit logs retained for 7 years (HIPAA requirement)
@@ -165,6 +173,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Phase 1: Proof of Concept (4 weeks)
 
 **Scope**:
+
 - Single action type: Kubernetes pod restart
 - Single namespace (non-production)
 - 3 volunteer engineers
@@ -172,6 +181,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 **Team**: 2 SREs
 
 **Results**:
+
 - 100% success rate on 12 test incidents
 - Average time from diagnosis to restart: 2 minutes (vs. 8 minutes manual)
 - Decision to proceed with expanded pilot
@@ -179,6 +189,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Phase 2: Pilot Deployment (3 months)
 
 **Scope**:
+
 - Expanded to 8 action types (pod restart, scale, cache clear, queue drain, etc.)
 - Production environment with safeguards
 - All SRE team (12 engineers)
@@ -202,6 +213,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 **Rollout Strategy**: Incident-type by incident-type, starting with safest
 
 **Adoption Metrics**:
+
 - Month 1: Pod restarts only (safest) - 100% adoption
 - Month 2: Added cache clears, scaling - 90% adoption
 - Month 4: Added legacy panel actions (queue management) - 68% adoption
@@ -221,16 +233,19 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### Qualitative Impact
 
 **Team Experience:**
+
 - "I can approve a fix and go back to sleep instead of spending 30min executing it" - On-call Engineer
 - "The verification step caught a case where cache clear didn't actually work - saved us hours" - Senior SRE
 - "Browser automation for the legacy admin panel is honestly magical" - Platform Engineer
 
 **Organizational Benefits:**
+
 - Reduced on-call burnout (toil hours cut by 62%)
 - Standardized remediation procedures (everyone uses same steps)
 - Better audit trail for compliance reviews
 
 **Unexpected Wins:**
+
 - Browser automation recordings became training material for new engineers
 - Action library became living documentation of "how to fix X"
 - Reduced late-night mistakes; system doesn't make typos
@@ -242,10 +257,12 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 **Problem**: Browser automation sessions lasted 5+ minutes; admin panel timeout was 3 minutes
 
 **Attempted Solutions**:
+
 1. Faster actions - Still hit timeout on complex workflows
 2. Session keep-alive pings - Admin panel blocked automation
 
 **Final Solution**:
+
 - Pre-authenticate before diagnosis complete
 - Maintain session pool (2 warm sessions per panel)
 - Session refresh in background
@@ -259,10 +276,12 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 **Problem**: Engineers didn't know if proposed action was safe to approve
 
 **Attempted Solutions**:
+
 1. Always show risk as "high" - Engineers ignored it
 2. Detailed risk explanation - Too verbose, not read
 
 **Final Solution**:
+
 - Simple risk score (low/medium/high) with 1-sentence reason
 - Show blast radius (e.g., "affects 1 pod in staging")
 - Historical success rate for this action type
@@ -276,10 +295,12 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 **Problem**: Action "succeeded" but issue persisted (e.g., pod restarted but still crashing)
 
 **Attempted Solutions**:
+
 1. Simple health check - Not comprehensive
 2. Wait and see - Too slow
 
 **Final Solution**:
+
 - Multi-stage verification:
   1. Action completed (e.g., pod restarted)
   2. Service healthy (health check passing)
@@ -313,6 +334,7 @@ Implemented human-in-the-loop (HITL) remediation system that proposes and execut
 ### For Similar Organizations
 
 **If you're building HITL remediation:**
+
 - ✅ **Do**: Start with safest actions (read-only, idempotent operations)
 - ✅ **Do**: Build comprehensive verification (not just action completion)
 - ✅ **Do**: Provide approval UI in same tool as incident management (Slack, Teams)
@@ -336,6 +358,7 @@ Before attempting this implementation, ensure you have:
 **Time**: 4-6 months with 2 FTE engineers
 
 **Budget**:
+
 - Infrastructure: $400/month (browser automation VMs, databases)
 - LLM API: $500-1000/month
 - StackStorm: Self-hosted (included in infra costs)
@@ -400,7 +423,7 @@ audit:
 
 ### Sample Slack Approval Message
 
-```
+```text
 🤖 Remediation Proposed
 
 **Incident**: High error rate in user-service
@@ -440,4 +463,3 @@ This approval expires in 5 minutes
 **Last updated**: December 2024
 
 **Version**: 1.0
-
