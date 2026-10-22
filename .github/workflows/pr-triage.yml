@@ -1,8 +1,10 @@
 name: PR Triage & Auto-labeling
 
+# pull_request_target runs with a write token on fork PRs. Never check out or
+# execute PR code in this workflow; read the PR only through the API.
 on:
-  pull_request:
-    types: [opened, edited, synchronize]
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
 
 permissions:
   contents: read
@@ -15,16 +17,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: Auto-label based on files changed
         uses: actions/github-script@v8
         with:
           script: |
-            const { data: files } = await github.rest.pulls.listFiles({
+            const files = await github.paginate(github.rest.pulls.listFiles, {
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number
@@ -33,18 +30,20 @@ jobs:
             const labels = new Set();
 
             files.forEach(file => {
+              const patch = file.patch || '';
+
               if (file.filename === 'README.md') {
-                if (file.patch.includes('## Graph RAG')) labels.add('category:graph-rag');
-                if (file.patch.includes('## Agentic Remediation')) labels.add('category:remediation');
-                if (file.patch.includes('## MCP Servers')) labels.add('category:mcp');
-                if (file.patch.includes('## Browser')) labels.add('category:browser-agents');
-                if (file.patch.includes('## Compliance')) labels.add('category:compliance');
-                if (file.patch.includes('## Datasets')) labels.add('category:datasets');
+                if (patch.includes('## Graph RAG')) labels.add('category:graph-rag');
+                if (patch.includes('## Agentic Remediation')) labels.add('category:remediation');
+                if (patch.includes('## MCP Servers')) labels.add('category:mcp');
+                if (patch.includes('## Browser')) labels.add('category:browser-agents');
+                if (patch.includes('## Compliance')) labels.add('category:compliance');
+                if (patch.includes('## Datasets')) labels.add('category:datasets');
 
                 // Detect type of change
-                if (file.patch.includes('+- **[')) labels.add('new-project');
-                if (file.patch.includes('- **[') && file.patch.includes('](http')) {
-                  if (file.patch.match(/^\-.*\]/m)) labels.add('remove-project');
+                if (patch.includes('+- **[')) labels.add('new-project');
+                if (patch.includes('- **[') && patch.includes('](http')) {
+                  if (patch.match(/^\-.*\]/m)) labels.add('remove-project');
                 }
               }
 
@@ -67,6 +66,7 @@ jobs:
             }
 
       - name: Validate PR description
+        if: github.event.action == 'opened'
         uses: actions/github-script@v8
         with:
           script: |
@@ -82,19 +82,21 @@ jobs:
             }
 
       - name: Check for new project submission
+        if: github.event.action == 'opened'
         uses: actions/github-script@v8
         with:
           script: |
-            const { data: files } = await github.rest.pulls.listFiles({
+            const files = await github.paginate(github.rest.pulls.listFiles, {
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number
             });
 
             const readmeFile = files.find(f => f.filename === 'README.md');
+            const patch = readmeFile?.patch || '';
 
-            if (readmeFile && readmeFile.patch.includes('+- **[')) {
-              const projectMatches = readmeFile.patch.match(/\+- \*\*\[(.*?)\]\((.*?)\)\*\* – (.*)/g);
+            if (patch.includes('+- **[')) {
+              const projectMatches = patch.match(/\+- \*\*\[(.*?)\]\((.*?)\)\*\* – (.*)/g);
 
               if (projectMatches) {
                 let comment = '### 📋 New Project Submission Checklist\n\n';
@@ -123,17 +125,35 @@ jobs:
             }
 
       - name: Welcome first-time contributors
-        uses: actions/first-interaction@v3
+        if: github.event.action == 'opened'
+        uses: actions/github-script@v8
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-message: |
-            🎉 **Welcome to awesome-autonomous-ops!**
+          script: |
+            const author = context.payload.pull_request.user.login;
+            const pulls = await github.paginate(github.rest.pulls.list, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              per_page: 100
+            });
+            const earlier = pulls.filter(p => p.user?.login === author && p.number < context.issue.number);
 
-            Thank you for your first contribution! We appreciate you taking the time to improve this resource.
-
-            A maintainer will review your PR soon. In the meantime:
-            - Ensure you've read [CONTRIBUTING.md](CONTRIBUTING.md)
-            - Check that automated validations pass
-            - Feel free to join our [Discussions](../../discussions)
-
-            Looking forward to your contributions! 🚀
+            if (earlier.length === 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: [
+                  '🎉 **Welcome to awesome-autonomous-ops!**',
+                  '',
+                  'Thank you for your first contribution! We appreciate you taking the time to improve this resource.',
+                  '',
+                  'A maintainer will review your PR soon. In the meantime:',
+                  '- Ensure you\'ve read [CONTRIBUTING.md](CONTRIBUTING.md)',
+                  '- Check that automated validations pass',
+                  '- Feel free to join our [Discussions](../../discussions)',
+                  '',
+                  'Looking forward to your contributions! 🚀'
+                ].join('\n')
+              });
+            }
