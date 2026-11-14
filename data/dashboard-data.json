@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-13T08:49:42.562124+00:00",
+  "generated_at": "2026-11-14T08:10:31.721051+00:00",
   "overview": {
     "total_projects": 40,
-    "total_stars": 659319,
-    "total_forks": 121244
+    "total_stars": 659643,
+    "total_forks": 121374
   },
   "freshness_distribution": {
-    "active": 31,
-    "moderate": 4
+    "active": 30,
+    "moderate": 5
   },
   "top_languages": {
     "Python": 18,
